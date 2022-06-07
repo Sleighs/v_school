@@ -1,4 +1,6 @@
-// DOM Olympics
+//////////////////
+// DOM Olympics //
+//////////////////
 
 // Counter for new chat messages
 var chatCounter = 1;
@@ -10,16 +12,25 @@ var rightMessages = document.getElementsByClassName('right')
 
 // Initializes app functionality
 function init(){
-    // Add header
+    // Create header elements
     var headerEle = document.getElementById('header')
     var title1 = document.createElement('h1')
     var title2 = document.createElement('h2')
-    title1.innerHTML = 'JavaScript Made This!!'
-    title2.innerHTML = 'Samuel Wright wrote the JavaScript'
+    var nameEle = document.createElement('span')
+    var textEle = document.createElement('span')
 
+    // Add text to header elements
+    title1.innerHTML = 'JavaScript Made This!!'
+    nameEle.innerHTML = 'Samuel Wright'
+    textEle.innerHTML = ' wrote the JavaScript'
+
+    // Add style to header elements
     title1.style.textAlign = 'center'
     title2.style.textAlign = 'center'
+    nameEle.style.color = 'lightgreen'
 
+    // Add elements to page
+    title2.append(nameEle, textEle)
     headerEle.appendChild(title1)
     headerEle.appendChild(title2)
 

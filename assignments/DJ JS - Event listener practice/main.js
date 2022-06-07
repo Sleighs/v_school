@@ -1,3 +1,8 @@
+///////////
+// DJ JS //
+///////////
+
+// Colors for square
 var colors = {
     blue: 'blue',
     red: 'red',
