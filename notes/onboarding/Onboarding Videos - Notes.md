@@ -1,6 +1,4 @@
-# Notes
-
-## Onboarding
+# Onboarding Notes
 - video 1 - bob zer-role?
     - director or education/ head of web dev curriculum
 
@@ -30,7 +28,16 @@
     - graduation = getting tech job
     - experience building module
 - video 5 - curriculum intro
-    - 
+- video 6 - slack tips
+    - each level has a different private room
+    - mention by tagging with @
+    - use threads to keep topic discussions together
+    - reactions
+    - stars
+    - pinning items
+    - search features
+        - channel search
+- video 7 - 
 
 
 
