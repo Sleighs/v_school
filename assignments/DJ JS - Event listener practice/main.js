@@ -37,11 +37,44 @@ function start(){
         if (windowHover && squareHover) {
             squareEle.style.backgroundColor = colors.blue;
         }
+      });
+    document.addEventListener('mousemove', function checkHover() {
+        const squareHover = hovered(squareEle);
+        const windowHover = hovered(windowEle);
+
         // Set color to orange if square is not being hovered
         if (windowHover && !squareHover){
             squareEle.style.backgroundColor = colors.orange;
         }
-      });
+    });
+
+    // Keyboard listeners
+    document.addEventListener('keydown', function(e){
+        switch(e.code){
+            // Red
+            case 'KeyR':
+                squareEle.style.backgroundColor = colors.red;
+                break;
+            // Yellow
+            case 'KeyY':
+                squareEle.style.backgroundColor = colors.yellow;
+                break;
+            // Green
+            case 'KeyG':
+                squareEle.style.backgroundColor = colors.green;
+                break;
+            // Blue
+            case 'KeyB':
+                squareEle.style.backgroundColor = colors.blue;
+                break;
+            // Orange
+            case 'KeyO':
+                squareEle.style.backgroundColor = colors.orange;
+                break;
+            default: 
+                return;
+        }
+    })
 }
 
 // Runs start function when page loads
