@@ -10,6 +10,19 @@ var rightMessages = document.getElementsByClassName('right')
 
 // Initializes app functionality
 function init(){
+    // Add header
+    var headerEle = document.getElementById('header')
+    var title1 = document.createElement('h1')
+    var title2 = document.createElement('h2')
+    title1.innerHTML = 'JavaScript Made This!!'
+    title2.innerHTML = 'Samuel Wright wrote the JavaScript'
+
+    title1.style.textAlign = 'center'
+    title2.style.textAlign = 'center'
+
+    headerEle.appendChild(title1)
+    headerEle.appendChild(title2)
+
     // Change chat text
     leftMessages[0].innerHTML = 'Hey'
     rightMessages[0].innerHTML = 'Sup'
