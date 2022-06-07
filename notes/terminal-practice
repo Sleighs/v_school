@@ -1,7 +1,17 @@
-mkdir
-touch
-rm
-open
-cd
-cp - copy
-mv - move, rename
+# Notes
+
+# Commands
+- mkdir - make directory
+- touch - create file
+- rm - remove file
+- open - open file
+- cd - change directory
+- cp - copy
+- mv - move, rename
+- ls - list files 
+    - -a - shows hidden files
+    - -l - shows longform version
+- code - opens file in vscode
+- nano - built in editor
+- vi/vim
+    - save - :w

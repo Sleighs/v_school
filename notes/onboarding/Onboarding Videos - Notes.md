@@ -37,7 +37,7 @@
     - pinning items
     - search features
         - channel search
-- video 7 - 
+- video 7 - conclusion
 
 
 
