@@ -36,7 +36,9 @@ function createSubItem(e){
     // Stying for for first subitem and visibility
     subItem.style.backgroundColor = dropDown.childNodes[0].value
     subItem.style.color = 'white'
-    subItem.style.padding = '5px'
+    subItem.style.padding = '7px'
+
+    subItem.style.fontSize = '24px'
 
     return subItem
 }
