@@ -13,7 +13,7 @@ let year = d.getFullYear()
 document.getElementById('header').textContent = month + ' ' + day + ', ' + year;
 */
 
-
+// A place to store list data
 var listData = {
     listEntries: []
 }
@@ -91,6 +91,7 @@ const displayList = () => {
 
     // Get list data
     for (var i = 0; i < listData.listEntries.length; i++){
+        // Get id and text of entry
         var id = listData.listEntries[i][0]
         var text = listData.listEntries[i][1]
 
@@ -98,10 +99,7 @@ const displayList = () => {
         var newListItem = document.createElement("li")
         newListItem.setAttribute("class", "list-item")
 
-        // Add id to element
-        //newListItem.setAttribute("data", String(id))
-
-        // Add input text to li element 
+        // Add text to li element 
         const itemText = document.createElement("div")
         itemText.innerHTML = text
         newListItem.appendChild(itemText)
@@ -110,8 +108,10 @@ const displayList = () => {
         const editButton = document.createElement("button")
         editButton.textContent = 'edit'
         editButton.setAttribute("class", "edit-button")
-        editButton.addEventListener('click', (e, id) => {
-            editEntry(id)
+        editButton.addEventListener('click', (e) => {
+            // Replace list text with input and button
+
+            editEntry(e, id)
         })
         newListItem.appendChild(editButton)
 
@@ -120,13 +120,13 @@ const displayList = () => {
         deleteButton.textContent = 'X'
         deleteButton.setAttribute("class", "delete-button")
         deleteButton.addEventListener('click', (e) => {
+            // Send event parent node to delete from html 
+                // Send id to delete from storage
             deleteEntry(e.target.parentNode, id)
         })
         newListItem.appendChild(deleteButton)
 
         // Add color change option
-        /*const dropDown = createDropDown()
-        newItem.appendChild(dropDown)*/
 
         document.getElementById("list").appendChild(newListItem)
     }
