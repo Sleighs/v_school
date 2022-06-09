@@ -2,16 +2,6 @@
 // Mom's Shopping List //
 /////////////////////////
 
-// Add date to header
-/*const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-const d = new Date();
-
-let month = months[d.getMonth()];
-let day = d.getDay()
-let year = d.getFullYear()
-
-document.getElementById('header').textContent = month + ' ' + day + ', ' + year;
-*/
 
 // A place to store list data
 var listData = {
@@ -58,12 +48,13 @@ const createListItem = (e) => {
 
 
 const deleteEntry = (node, id) => {
-    // Remove parent node to delete item
+    // Remove node from page
     node.remove()
 
+    // Create new array
     var newArr = []
 
-    // Populate new array, excluding deleted item
+    // Populate new array with current list, excluding deleted item
     for (var i = 0; i < listData.listEntries.length; i++){
         if (listData.listEntries[i][0] !== id){
             newArr.push(listData.listEntries[i])
@@ -77,8 +68,26 @@ const deleteEntry = (node, id) => {
     displayList()
 }
 
-const editEntry = (e) => {
-    console.log('edit', e)
+const editEntry = (e, id, newText) => {
+    
+    // Create new array
+    var newArr = []
+
+    // Populate new array with current list, updating the new text
+    for (var i = 0; i < listData.listEntries.length; i++){
+        if (listData.listEntries[i][0] === id){
+            newArr.push([id, newText])
+            
+        } else {
+            newArr.push(listData.listEntries[i])
+        }
+    }
+
+    // Store new array
+    listData.listEntries = newArr
+
+    // Display new list
+    displayList()
 }
 
 const displayList = () => {
@@ -104,19 +113,41 @@ const displayList = () => {
         itemText.innerHTML = text
         newListItem.appendChild(itemText)
 
-        // Create edit button and add to li element
+        // Create edit and delete button
         const editButton = document.createElement("button")
+        const deleteButton = document.createElement("button")
+
+        // Edit button
         editButton.textContent = 'edit'
         editButton.setAttribute("class", "edit-button")
         editButton.addEventListener('click', (e) => {
             // Replace list text with input and button
+            console.log(e.target)
 
-            editEntry(e, id)
+            // remove text
+            var editEle = document.createElement('div')
+            var inputEle = document.createElement('input')
+            var submitEle = document.createElement('button')
+            inputEle.value = text
+            submitEle.textContent = 'Update'
+
+            // Add listener to button
+            submitEle.addEventListener('click', (e) => {
+                editEntry(e, id, inputEle.value)
+                console.log(e, id, inputEle.value)
+            })
+
+            // Add element to page
+            editEle.appendChild(inputEle)
+            editEle.appendChild(submitEle)
+            e.target.parentNode.appendChild(editEle)
+            editButton.remove()
+            deleteButton.remove()
+            
         })
         newListItem.appendChild(editButton)
 
-        // Create delete button and add to li element
-        const deleteButton = document.createElement("button")
+        // Delete button
         deleteButton.textContent = 'X'
         deleteButton.setAttribute("class", "delete-button")
         deleteButton.addEventListener('click', (e) => {
@@ -131,3 +162,14 @@ const displayList = () => {
         document.getElementById("list").appendChild(newListItem)
     }
 }
+
+// Add date functionality
+/*const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const d = new Date();
+
+let month = months[d.getMonth()];
+let day = d.getDay()
+let year = d.getFullYear()
+
+document.getElementById('header').textContent = month + ' ' + day + ', ' + year;
+*/
