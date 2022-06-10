@@ -3,7 +3,7 @@
 /////////////////////////
 
 
-// A place to store list data
+// A place to store the app's data
 var listData = {
     listEntries: []
 }
