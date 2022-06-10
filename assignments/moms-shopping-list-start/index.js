@@ -43,9 +43,6 @@ const createListItem = (e) => {
     // Store list data
     listData.listEntries.push([id, item.value])
 
-    // Store list in cookie
-    //createCookie("saved-list", listData.listEntries)
-
     // Display new list
     displayList()
 }
@@ -162,13 +159,6 @@ const displayList = () => {
 
     // Store list in cookie
     createCookie("saved-list", listData.listEntries)
-
-    // Get saved
-    if (readCookie("saved-list") && JSON.parse(readCookie("saved-list").length > 0)){
-        //listData.listEntries = JSON.parse(readCookie("saved-list"))
-    }
-
-    //listData.listEntries = JSON.parse(readCookie("saved-list"))
 }
 
 /*const getDate = () => {
@@ -189,7 +179,7 @@ const createCookie = (key, value) => {
         key 
         + "=" 
         + JSON.stringify(value) 
-        +";max-age=86400;"
+        +";max-age=86400;" // Stored for 1 day
     ;
     
     document.cookie = cookie;
