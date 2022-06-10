@@ -8,6 +8,7 @@ var listData = {
     listEntries: []
 }
 
+
 // Add listener to button
 document.getElementsByName("addItem")[0].addEventListener("submit", function(e){
     // Create new list item
@@ -42,6 +43,9 @@ const createListItem = (e) => {
     // Store list data
     listData.listEntries.push([id, item.value])
 
+    // Store list in cookie
+    //createCookie("saved-list", listData.listEntries)
+
     // Display new list
     displayList()
 }
@@ -69,7 +73,6 @@ const deleteEntry = (node, id) => {
 }
 
 const editEntry = (e, id, newText) => {
-    
     // Create new array
     var newArr = []
 
@@ -122,9 +125,6 @@ const displayList = () => {
         editButton.setAttribute("class", "edit-button")
         editButton.addEventListener('click', (e) => {
             // Replace list text with input and button
-            console.log(e.target)
-
-            // remove text
             var editEle = document.createElement('div')
             var inputEle = document.createElement('input')
             var submitEle = document.createElement('button')
@@ -157,19 +157,96 @@ const displayList = () => {
         })
         newListItem.appendChild(deleteButton)
 
-        // Add color change option
-
         document.getElementById("list").appendChild(newListItem)
     }
+
+    // Store list in cookie
+    createCookie("saved-list", listData.listEntries)
+
+    // Get saved
+    if (readCookie("saved-list") && JSON.parse(readCookie("saved-list").length > 0)){
+        //listData.listEntries = JSON.parse(readCookie("saved-list"))
+    }
+
+    //listData.listEntries = JSON.parse(readCookie("saved-list"))
 }
 
-// Add date functionality
-/*const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-const d = new Date();
+/*const getDate = () => {
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    const d = new Date();
 
-let month = months[d.getMonth()];
-let day = d.getDay()
-let year = d.getFullYear()
+    let month = months[d.getMonth()];
+    let day = d.getDay()
+    let year = d.getFullYear()
 
-document.getElementById('header').textContent = month + ' ' + day + ', ' + year;
-*/
+    document.getElementById('header').textContent = month + ' ' + day + ', ' + year;
+
+}*/
+
+// Create cookie
+const createCookie = (key, value) => {
+    const cookie = 
+        key 
+        + "=" 
+        + JSON.stringify(value) 
+        +";max-age=86400;"
+    ;
+    
+    document.cookie = cookie;
+
+    /*console.log(
+        "New cookie with key: " 
+        + key 
+        + " value: " 
+        + value 
+        + ";max-age=86400;"
+    );*/
+}
+
+// Read cookie
+const readCookie = (name) => {
+    let key = name + "=";
+    let cookies = document.cookie.split(';');
+
+    for (var i = 0; i < cookies.length; i++) {
+        let cookie = cookies[i];
+
+        while (cookie.charAt(0) === ' ') {
+            cookie = cookie.substring(1, cookie.length);
+        }
+
+        if (cookie.indexOf(key) === 0) {
+            return cookie.substring(key.length, cookie.length);
+        }
+    }
+
+    return null;
+}
+
+// Delete cookie
+const deleteCookie = (name) => {
+    createCookie(name, "", -1);
+    console.log('cookie deleted', readCookie("saved-list") )
+}
+
+window.onload = () => {
+    var deleteSavedListEle = document.createElement('button')
+    deleteSavedListEle.textContent = 'clear list'
+    deleteSavedListEle.addEventListener('click', ()=>{
+        // Clears cookie and page
+        deleteCookie('saved-list')
+        listData.listEntries = []
+        displayList()
+    })
+
+    document.getElementsByClassName('main')[0].appendChild(deleteSavedListEle)
+
+    // Get saved
+    if (readCookie("saved-list") && JSON.parse(readCookie("saved-list").length > 0)){
+        listData.listEntries = JSON.parse(readCookie("saved-list"))
+
+        console.log(JSON.parse(readCookie("saved-list")))
+    }
+
+    displayList()
+}
