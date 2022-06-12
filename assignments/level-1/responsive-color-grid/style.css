@@ -1,3 +1,8 @@
+* {
+    box-sizing: border-box;
+    font-size: 0px;
+}
+
 body {
     background-color: rgb(31, 34, 45);
 }
@@ -5,6 +10,7 @@ body {
 #app {
     margin: 10% auto;
     width: 80%;
+    max-width: 700px;
     height: 90%;
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
@@ -91,6 +97,9 @@ body {
 }
 
 @media only screen and (max-device-width: 768px) {
+    #app {
+        width: 90%;
+    }
     .box {
         grid-column-start: 1;
         grid-column-end: 5;
