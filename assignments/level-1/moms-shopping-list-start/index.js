@@ -77,7 +77,6 @@ const editEntry = (e, id, newText) => {
     for (var i = 0; i < listData.listEntries.length; i++){
         if (listData.listEntries[i][0] === id){
             newArr.push([id, newText])
-            
         } else {
             newArr.push(listData.listEntries[i])
         }
@@ -100,9 +99,9 @@ const displayList = () => {
 
     // Get list data
     for (var i = 0; i < listData.listEntries.length; i++){
-        // Get id and text of entry
-        var id = listData.listEntries[i][0]
-        var text = listData.listEntries[i][1]
+        let id = listData.listEntries[i][0]
+        let text = listData.listEntries[i][1]
+        console.log(listData.listEntries[i][1], id)
 
         // Create li element
         var newListItem = document.createElement("li")
@@ -121,6 +120,8 @@ const displayList = () => {
         editButton.textContent = 'edit'
         editButton.setAttribute("class", "edit-button")
         editButton.addEventListener('click', (e) => {
+            //var currentId = id;
+            console.log('id', id)
             // Replace list text with input and button
             var editEle = document.createElement('div')
             var inputEle = document.createElement('input')

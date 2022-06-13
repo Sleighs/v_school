@@ -1,0 +1,219 @@
+#nav {
+    display: none;
+}
+
+.container {
+    height: 90%;
+    width: 80%;
+    max-width: 700px;
+    margin: auto;
+    margin-top: 5%;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: auto;
+}
+.block {
+    padding: 20px;
+    border: solid 1pt white;
+    border-radius: 5px;
+}
+#one-a {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    background-color: #34fadc;
+    color: #34fadc;
+}
+#one-b {
+    grid-column-start: 3;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    background-color: #2d53ff;
+    color: #2d53ff;
+}
+#one-c {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    background-color: #34fadc;
+    color: #34fadc;
+}
+#one-d {
+    grid-column-start: 2;
+    grid-column-end: 5;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    background-color: #2d53ff;
+    color: #2d53ff;
+}
+#one-e {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    background-color: #34fadc;
+    color: #34fadc;
+}
+
+#two-a {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    background-color: #002754;
+    color: #002754;
+}
+#two-b {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 3;
+    grid-row-end: 7;
+    background-color: #002754;
+    color: #002754;
+}
+#two-c {
+    grid-column-start: 3;
+    grid-column-end: 5;
+    grid-row-start: 3;
+    grid-row-end: 5;
+    background-color: #004e54;
+    color: #004e54;
+}
+#two-d {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 5;
+    grid-row-end: 7;
+    background-color: #004e54;
+    color: #004e54;
+}
+#two-e {
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 5;
+    grid-row-end: 7;
+    background-color: #004e54;
+    color: #004e54;
+}
+
+#container3 {
+    color: white;
+}
+
+/* Desktop */
+#three-a {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    background-color: gray;
+}
+#three-b {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 5;
+    background-color: gray;
+}
+#three-c {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 5;
+    background-color: gray;
+}
+#three-d {
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 2;
+    grid-row-end: 5;
+    background-color: gray;
+}
+#three-e {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start: 5;
+    grid-row-end: 6;
+    background-color: gray;
+}
+
+/* Phone */
+@media only screen and (max-device-width: 640px) {
+    #three-a {
+        grid-column-start: 1;
+        grid-column-end: 5;
+        grid-row-start: 1;
+        grid-row-end: 2;
+        background-color: gray;
+    }
+    #three-b {
+        grid-column-start: 1;
+        grid-column-end: 5;
+        grid-row-start: 2;
+        grid-row-end: 3;
+        background-color: gray;
+    }
+    #three-c {
+        grid-column-start: 1;
+        grid-column-end: 5;
+        grid-row-start: 3;
+        grid-row-end: 5;
+        background-color: gray;
+    }
+    #three-d {
+        grid-column-start: 1;
+        grid-column-end: 5;
+        grid-row-start: 5;
+        grid-row-end: 6;
+        background-color: gray;
+    }
+    #three-e {
+        grid-column-start: 1;
+        grid-column-end: 5;
+        grid-row-start: 6;
+        grid-row-end: 7;
+        background-color: gray;
+    }
+  }
+    
+/* Tablet */
+@media only screen and (max-device-width: 825px){
+    #three-a {
+        grid-column-start: 1;
+        grid-column-end: 5;
+        grid-row-start: 1;
+        grid-row-end: 2;
+        background-color: gray;
+    }
+    #three-b {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 2;
+        grid-row-end: 4;
+        background-color: gray;
+    }
+    #three-c {
+        grid-column-start: 2;
+        grid-column-end: 5;
+        grid-row-start: 2;
+        grid-row-end: 4;
+        background-color: gray;
+    }
+    #three-d {
+        grid-column-start: 1;
+        grid-column-end: 5;
+        grid-row-start: 4;
+        grid-row-end: 5;
+        background-color: gray;
+    }
+    #three-e {
+        grid-column-start: 1;
+        grid-column-end: 5;
+        grid-row-start: 5;
+        grid-row-end: 6;
+        background-color: gray;
+    }
+  }
