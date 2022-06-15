@@ -15,18 +15,25 @@ var Game = {
     exp: 0,
     startItem: null,
 
+    // Inventory
     startItems: ['Laser Knife', 'Dark Ale'],
     items: [],
 
+    // State
+    gamePhase: 'intro', // intro, beginning, middle, end
+    fight: false,
+    showStats: null,
+    continue: null,
     location: [
         ['north', 'east', 'south', 'west']
     ],
-    
-    start: false,
-    
-    gamePhase: 'intro', // intro, beginning, middle, end
-    showStats: null,
-    continue: null,
+}
+
+function Item(name, uses, strength, hp){
+    this.name = name
+    this.uses = uses
+    this.strength = strength
+    this.hp = hp
 }
 
 function addItem(type, num){
@@ -38,20 +45,30 @@ function addItem(type, num){
             uses: 0,
             stats:
         }
-    
     */
+   var item;
+
     if (type === 'start'){
         if (num === 0 || num === '0'){
-            Game.items.push('laser knife')
+            //Game.items.push('Laser Knife')
+            item = new Item('Dark Ale', 5, 0, 10)
+            Game.items.push(item)
+
+            console.log('Laser Knife added to items.')
+            console.log('Inventory: ', Game.items)
         } else
         if (num === 1 || num === '1'){
-            Game.items.push('dark ale')
+            //Game.items.push('Dark Ale')
+            item = new Item('Dark Ale', 5, 0, 10)
+            Game.items.push(item)
+
+            console.log('Dark Ale added to items.')
+            console.log('Inventory: ', Game.items)
         } else {
             console.log('No item acquired')
             return
         }
     }
-    console.log('item added', Game.items)
 }
 
 function removeItem(){
@@ -59,25 +76,23 @@ function removeItem(){
 }
 
 function walk(){
-
+    console.log('walking..')
 }
 
 function fight(){
+
+    // fight commands
+        // attack
+        // defend
+        // use item
+        // run
+
 
 }
 
   ///////////////////
  /// Intro Phase ///
 ///////////////////
-/*
-    Introduce
-        - story
-        - character
-        - setting
-    Setup
-        - choose item
-
-*/
 
 console.log("Welcome to Dark City!!")
 console.log('=========Introduction=========')
@@ -86,11 +101,12 @@ console.log(
     + 'Electric lights, gangs and darkness have flooded every corner of the technopolis.  '
     + 'While most seeking to conquer Dark City find despair, some have found fortune and glory.  '
     + ' '
-    // directions
     // instructions
 )
-
-Game.continue = readline.keyIn('Press any key to begin...',{hideEchoBack: true,})
+console.log('')
+readline.question('Press [Enter] to begin...', {
+    hideEchoBack: true,
+})
 
 Game.phase = 'beginning'
 
@@ -98,33 +114,22 @@ Game.phase = 'beginning'
     Describe setting.
         - room on a homestead
         - landowner is sympathetic to hero's causes: to get the Dusty Brawlers and will do anything for payback
-    
-        You see something with your name on it reading...
 */
 
-console.log(
-    'Beep Beeeeeep Beep Beep Beeep. A cell phone rings upstairs in a lonely farmhouse. '
-)
+console.log(' ')
+console.log('Beep Beeeeeep Beep Beep Beeep.  A cell phone rings in a second floor bedroom of a lonely farmhouse.  ')
+console.log(' ')
 Game.name = readline.question('Please enter your name:');
-
-console.log(
-    'You slightly wake from your slumber to pick up the phone from the night stand  '
-)
-//console.log('Wake up ' + Game.name + '.  The night has come. ')
-
-console.log( 
-    'Two unread messages.'
-)
-
-readline.keyInYN('Read messages?')
-
-console.log(
-    'The recent message reads "NINE DICE CLUB 10PM -Anonymous 4:30pm".  '
-    + 'The second reads "Brawlers planning something big! Get here soon ' + Game.name + '! -Ana 4:50pm"'
-)
-
-readline.keyInYN('Leave bed?')
-
+console.log(' ')
+console.log('You slightly wake from your slumber to tilt the phone on the night stand.  ')
+console.log(' ')
+console.log('Two unread messages...')
+console.log(' ')
+readline.question('Press [Enter] to continue...', {hideEchoBack: true,})
+console.log(' ')
+console.log('Messages:  ')
+console.log('4:50pm: "Brawlers planning something big! Get here soon ' + Game.name + '! -Ana"  ')
+console.log('4:30pm: "NINE DICE CLUB 10PM -Anonymous"  ')
 
 /*  
     introduce motive for going out: revenge
@@ -134,7 +139,6 @@ readline.keyInYN('Leave bed?')
         - following intel from last night when you closed down a gang hideout. 
         - You have been systematically 'closing' hideouts
 */
-
 
 /*
     
@@ -152,14 +156,29 @@ readline.keyInYN('Leave bed?')
 
 // Choose start Item
     // While player is in room they can look around before leaving
-
+console.log(' ')
 readline.keyIn('Press any key to continue...', {hideEchoBack: true,})
-
+console.log(' ')
+console.log(
+    'As the sun touches the horizon.  '
+    + 'You put on your jacket with pocket space for an item.  '
+    + 'A Laser Knife and Dark Ale sit on the desk.  '
+)
 Game.startItem = readline.keyInSelect(Game.startItems, 'Which item are you bringing?  ');
 
 addItem('start', Game.startItem)
 
 // Update to tell user what item does
+if (
+    Game.startItems[Game.startItem] == 'Laser Knife' 
+    || Game.startItems[Game.startItem] == 'Dark Ale'
+){
+    console.log('You pick up the ' + Game.startItems[Game.startItem] + ' and leave the room.')
+} else {
+    console.log('You leave the room')
+}
+console.log('')
+/*
 console.log(
     (
         Number(Game.startItem) === 0
@@ -170,12 +189,10 @@ console.log(
     )     
     + 'leave the room.'
 );
+*/
 
 
-
-//Game.start = readline.question('Are you ready to enter Dark City?');
-
-if (readline.keyInYN('Are you ready to go to Dark City?')) {
+/*if (readline.keyInYN('Are you ready to go to Dark City?')) {
     // 'Y' key was pressed.
     console.log('Departing now...');
 
@@ -189,7 +206,12 @@ if (readline.keyInYN('Are you ready to go to Dark City?')) {
 
     //console.log('You pick up the ' + Game.startItem + ' and leave the room.');
 
-  }
+  }*/
+
+console.log('The farmer tosses you keys.  "Good luck and farewell", he says. ') //"Give em hell kid"
+console.log('')
+readline.question('Press [Enter] to depart for Dark City...', {hideEchoBack: true,})
+console.log('')
 
   ////////////////////
  /// Middle Phase ///
@@ -203,13 +225,20 @@ if (readline.keyInYN('Are you ready to go to Dark City?')) {
 
 Game.phase = 'middle'
 
+console.log('Outside...');
 console.log(
-    'Many acres of untended fields surround the house between woods and a two lane highway.  '
-    + 'You start up the old motorcycle in the garage, head down the long driveway and set out down Highway 99.  '
-    + 'You pass the endless rolling fields of rural Abbington Valley on the way to Dark City.  '
+    'Outside, the farm house is surrounded by many acres of untended fields.  '
+    + 'Bordering the land is thick forest and a two lane highway.  '
 )
-
-
+readline.question('Press [Enter] to continue...', {hideEchoBack: true,})
+console.log('')
+console.log(
+    'You start up the old motorcycle in the garage, head down the long driveway and set out down Highway 99.  '
+    + 'Endless rolling fields of rural Abbington Valley fly by on the route to Dark City.  '
+)
+console.log('')
+readline.question('Press [Enter] to continue...', {hideEchoBack: true,})
+console.log('')
 /*
     Describe entering the city
     As you approach the city ...
@@ -218,6 +247,18 @@ console.log(
     - a bribe
 */
 
+while (Game.phase === 'middle'){
+    // check if fighting or walking
+
+    Game.action = readline.question('action')
+
+    if (Game.action == 'w'){
+        walk()
+    }
+    if (Game.action == 'end'){
+        Game.phase = 'end'
+    }
+}
 /*
 
 Game Mechanics
