@@ -29,6 +29,8 @@ var Game = {
     ],
 }
 
+var randEncounter, randBuilding, randItem;
+
 function Item(name, uses, strength, hp){
     this.name = name
     this.uses = uses
@@ -36,7 +38,10 @@ function Item(name, uses, strength, hp){
     this.hp = hp
 }
 
-function addItem(type, num){
+function randomNum(max){
+    return Math.floor(Math.random() * max)
+}
+function addItem(type, num, name){
     //console.log(type, num)
 
     /* 
@@ -51,7 +56,7 @@ function addItem(type, num){
     if (type === 'start'){
         if (num === 0 || num === '0'){
             //Game.items.push('Laser Knife')
-            item = new Item('Dark Ale', 5, 0, 10)
+            item = new Item('Laser Knife', null, 5, null)
             Game.items.push(item)
 
             console.log('Laser Knife added to items.')
@@ -59,7 +64,7 @@ function addItem(type, num){
         } else
         if (num === 1 || num === '1'){
             //Game.items.push('Dark Ale')
-            item = new Item('Dark Ale', 5, 0, 10)
+            item = new Item('Dark Ale', 5, null, 10)
             Game.items.push(item)
 
             console.log('Dark Ale added to items.')
@@ -69,24 +74,77 @@ function addItem(type, num){
             return
         }
     }
+
+    if (type == 'new'){
+        // check inventory
+        console.log('adding ' + name + '...')
+
+        var newInv = []
+
+        if(name){
+            for (var a = 0; a < Game.items.length; a++){
+
+                console.log(Game.items[a].name)
+                
+                if (name === Game.items[a].name){
+                    console.log('item exists', Game.items.Item.name)
+                } else {
+                    console.log('item does not exist')
+                    item = new Item(name, 1,2,3)
+                }
+            }
+        }
+    }
 }
 
 function removeItem(){
 
 }
 
-function walk(){
+function walk(encounter){
+    console.log('')
     console.log('walking..')
+
+    console.log('(random walking event)')
+
+    if (encounter < 20){
+        fight()
+    }
+}
+
+function searchBuilding(){
+    console.log('')
+    console.log('You entered the building...')
+    //readline.question('Press [Enter] to continue..')
+    
+    // get random event from array of random building events
+    console.log('(random building event)')
+
+    // 
+    randEncounter = randomNum(100)
+    if (randEncounter < 20){
+        //fight
+        fight()
+    }
+
+    randItem = randomNum(100)
+    if (randItem < 10){
+        console.log('(found item)')
+    } 
+
+    //test
+    addItem('new', 1 ,'dung beetle')
 }
 
 function fight(){
+    console.log('')
 
     // fight commands
         // attack
         // defend
         // use item
         // run
-
+    console.log('fight initialized')
 
 }
 
@@ -117,15 +175,15 @@ Game.phase = 'beginning'
 */
 
 console.log(' ')
-console.log('Beep Beeeeeep Beep Beep Beeep.  A cell phone rings in a second floor bedroom of a lonely farmhouse.  ')
+console.log(
+    'Beep Beeeeeep Beep Beep Beeep.  A cell phone rings in a second floor bedroom of a lonely farmhouse.  '
+    + 'You slightly wake from your slumber to tilt the phone on the night stand.  '
+    + 'Two unread messages...'
+)
 console.log(' ')
-Game.name = readline.question('Please enter your name:');
-console.log(' ')
-console.log('You slightly wake from your slumber to tilt the phone on the night stand.  ')
-console.log(' ')
-console.log('Two unread messages...')
-console.log(' ')
-readline.question('Press [Enter] to continue...', {hideEchoBack: true,})
+//readline.question('Press [Enter] to continue...', {hideEchoBack: true,})
+//console.log(' ')
+Game.name = readline.question('(What is your name?)  ');
 console.log(' ')
 console.log('Messages:  ')
 console.log('4:50pm: "Brawlers planning something big! Get here soon ' + Game.name + '! -Ana"  ')
@@ -157,7 +215,7 @@ console.log('4:30pm: "NINE DICE CLUB 10PM -Anonymous"  ')
 // Choose start Item
     // While player is in room they can look around before leaving
 console.log(' ')
-readline.keyIn('Press any key to continue...', {hideEchoBack: true,})
+readline.question('Press [Enter] to continue...', {hideEchoBack: true,})
 console.log(' ')
 console.log(
     'As the sun touches the horizon.  '
@@ -225,20 +283,23 @@ console.log('')
 
 Game.phase = 'middle'
 
-console.log('Outside...');
+console.log('You step out the front door...');
 console.log(
     'Outside, the farm house is surrounded by many acres of untended fields.  '
-    + 'Bordering the land is thick forest and a two lane highway.  '
+    + 'Bordering the farmland is thick forest and a two lane highway.  '
 )
 readline.question('Press [Enter] to continue...', {hideEchoBack: true,})
 console.log('')
 console.log(
-    'You start up the old motorcycle in the garage, head down the long driveway and set out down Highway 99.  '
-    + 'Endless rolling fields of rural Abbington Valley fly by on the route to Dark City.  '
+    'You start up the old motorcycle in the garage.  '
+    + 'It puckers followed by a loud "VROOOM".  '
+    + 'You head down the long driveway and set out down Highway 99.  '
+    + 'Endless rolling fields of rural Abbington Valley pass as you fly down the route to Dark City.  '
 )
 console.log('')
 readline.question('Press [Enter] to continue...', {hideEchoBack: true,})
 console.log('')
+
 /*
     Describe entering the city
     As you approach the city ...
@@ -246,19 +307,66 @@ console.log('')
     - a weapon
     - a bribe
 */
+console.log('The city blooms slowly on the horizon.  '
+    + 'The highway cuts through a quiet impoverished commercial district of a small town just beyond city limits.  '
+    + 'Save for a few well lit corner stores, most businesses closed early and were nestled behind heavy locked security gates.  '
+    + 'Dark City\'s skyline over shadows the town\'s neighborhoods.  '
+    + 'Run down homes stand out amongst the rows of identical unlit homes as you breeze pass the residential district.  '
+)
+console.log('')
+readline.question('Press [Enter] to continue...', {hideEchoBack: true,})
+console.log('')
+console.log(
+    'Beep Beeeeeep Beep Beep Beeep.  '
+    + 'The caller is displayed on your helmet visor.'
+)
+console.log('caller: Ana')
+console.log('')
+
+
+// Ana offers intel on a hideout where you can get an item
+readline.keyInYN('Talk to Ana?')
+console.log('')
+console.log(
+    Game.name + '. '
+)
+console.log('')
+readline.question('Press [Enter] to talk...')
+
+
+readline.question('Press [Enter] to enter Dark City...', {hideEchoBack: true,})
+console.log('')
+
 
 while (Game.phase === 'middle'){
-    // check if fighting or walking
+    console.log('')
+    
+    // if building let user search
+    randBuilding = randomNum(100)
+    
+    // Get action
+    if (randBuilding < 20){
+        console.log('You come across a suspicious building')
+        Game.action = readline.question('Action? [w]:walk  [b]search building  [end]:end ..')
+    } else {
+        Game.action = readline.question('Action? [w]:walk  [end]:end ..')
+    }
 
-    Game.action = readline.question('action')
-
+    // 
     if (Game.action == 'w'){
-        walk()
+        randEncounter = randomNum(100)
+
+        walk(randEncounter)
+    }
+    if (Game.action == 'b' && randBuilding < 20){
+        searchBuilding()
     }
     if (Game.action == 'end'){
         Game.phase = 'end'
+        console.log('Goodbye')
     }
 }
+
 /*
 
 Game Mechanics
