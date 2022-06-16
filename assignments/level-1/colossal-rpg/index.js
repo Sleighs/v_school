@@ -14,6 +14,7 @@ var Game = {
     charm: 10,
     exp: 0,
     startItem: null,
+    cash: 50,
 
     // Inventory
     startItems: ['Laser Knife', 'Dark Ale'],
@@ -24,9 +25,24 @@ var Game = {
     fight: false,
     showStats: null,
     continue: null,
-    location: [
-        ['north', 'east', 'south', 'west']
-    ],
+    eventText: {
+        walking: [
+            'Normal residential houses. No activity.',
+            'You pass a residential apartment building. Looks well protected.',
+            'You pass an empty field.  Signs kid\'s were playing there earlier. Nothing suspicious.' 
+        ],
+        search: [
+            'You come across a suspicious building',
+            'You hear fighting in the nearby alley',
+            'You come across a home that looks broken into',
+        ],
+        fight: [
+            'Enemy gang member approaches...',
+            'An enemy thief approaches...',
+            'A Brawler wants to fight...',
+        ]
+    
+    }
 }
 
 var randEncounter, randBuilding, randItem;
@@ -59,18 +75,24 @@ function addItem(type, num, name){
             item = new Item('Laser Knife', null, 5, null)
             Game.items.push(item)
 
+            console.log('')
             console.log('Laser Knife added to items.')
             console.log('Inventory: ', Game.items)
+            console.log('')
         } else
         if (num === 1 || num === '1'){
             //Game.items.push('Dark Ale')
             item = new Item('Dark Ale', 5, null, 10)
             Game.items.push(item)
 
+            console.log('')
             console.log('Dark Ale added to items.')
             console.log('Inventory: ', Game.items)
+            console.log('')
         } else {
+            console.log('')
             console.log('No item acquired')
+            console.log('')
             return
         }
     }
@@ -103,22 +125,25 @@ function removeItem(){
 
 function walk(encounter){
     console.log('')
-    console.log('walking..')
+    console.log('Walking on..')
 
-    console.log('(random walking event)')
+    var randEventNum = randomNum(Game.eventText.walking.length)
 
     if (encounter < 20){
+        console.log(Game.eventText.fight[randEventNum])
         fight()
+    } else {
+        console.log(Game.eventText.walking[randEventNum])
     }
 }
 
-function searchBuilding(){
+function search(){
     console.log('')
     console.log('You entered the building...')
     //readline.question('Press [Enter] to continue..')
     
     // get random event from array of random building events
-    console.log('(random building event)')
+    console.log('(random search event)')
 
     // 
     randEncounter = randomNum(100)
@@ -144,8 +169,8 @@ function fight(){
         // defend
         // use item
         // run
-    console.log('fight initialized')
 
+    console.log('fight initialized')
 }
 
   ///////////////////
@@ -157,9 +182,8 @@ console.log('=========Introduction=========')
 console.log(
     'Miles down the nearby two lane highway is a sprawling city.  '
     + 'Electric lights, gangs and darkness have flooded every corner of the technopolis.  '
-    + 'While most seeking to conquer Dark City find despair, some have found fortune and glory.  '
-    + ' '
-    // instructions
+    + 'A place of endless possibilites ruled by power and might.  '
+    + 'Fortune and glory lies at the top of Dark City\'s underworld, however nearly all who come to conquer it find despair.  '
 )
 console.log('')
 readline.question('Press [Enter] to begin...', {
@@ -169,16 +193,19 @@ readline.question('Press [Enter] to begin...', {
 Game.phase = 'beginning'
 
 /*
-    Describe setting.
-        - room on a homestead
-        - landowner is sympathetic to hero's causes: to get the Dusty Brawlers and will do anything for payback
+    Describe setting
+    - room on a homestead
+
+    Describe the opening plot
+    - hero out for revenge
+    - landowner is sympathetic to hero's causes: to get the Brawlers and will do anything for payback
 */
 
 console.log(' ')
 console.log(
-    'Beep Beeeeeep Beep Beep Beeep.  A cell phone rings in a second floor bedroom of a lonely farmhouse.  '
+    '"Beep Beeeeeep Beep Beep Beeep".  A cell phone rings in a second floor bedroom of a lonely farmhouse.  '
     + 'You slightly wake from your slumber to tilt the phone on the night stand.  '
-    + 'Two unread messages...'
+    + 'Three unread messages...'
 )
 console.log(' ')
 //readline.question('Press [Enter] to continue...', {hideEchoBack: true,})
@@ -186,8 +213,10 @@ console.log(' ')
 Game.name = readline.question('(What is your name?)  ');
 console.log(' ')
 console.log('Messages:  ')
-console.log('4:50pm: "Brawlers planning something big! Get here soon ' + Game.name + '! -Ana"  ')
-console.log('4:30pm: "NINE DICE CLUB 10PM -Anonymous"  ')
+console.log('4:59pm: Get here soon ' + Game.name + ' -Ana" ')
+console.log('4:50pm: "Brawlers planning something big tonight! It\s finally going down! -M" ')
+console.log('4:30pm: "NINE DICE CLUB 10PM -Anonymous" ')
+//console.log('...')
 
 /*  
     introduce motive for going out: revenge
@@ -224,9 +253,10 @@ console.log(
 )
 Game.startItem = readline.keyInSelect(Game.startItems, 'Which item are you bringing?  ');
 
+// Add item to inventory
 addItem('start', Game.startItem)
 
-// Update to tell user what item does
+// (Tell user what item does)
 if (
     Game.startItems[Game.startItem] == 'Laser Knife' 
     || Game.startItems[Game.startItem] == 'Dark Ale'
@@ -236,37 +266,14 @@ if (
     console.log('You leave the room')
 }
 console.log('')
-/*
+console.log('You walk downstairs...  ')
 console.log(
-    (
-        Number(Game.startItem) === 0
-        ? 'You pick up the Laser Knife and '
-        : Number(Game.startItem) === 1
-            ? 'You pick up the Dark Ale and '
-            : 'You '
-    )     
-    + 'leave the room.'
-);
-*/
-
-
-/*if (readline.keyInYN('Are you ready to go to Dark City?')) {
-    // 'Y' key was pressed.
-    console.log('Departing now...');
-
-  } else {
-    // Another key was pressed.
-    console.log('You return to grab a different item...');
-
-    // allow user to bring a different item and maybe look around
-    // Game.startItem = readline.keyInSelect(Game.startItems, 'Which item are you bringing?');
-    // addItem('start', Game.startItem)
-
-    //console.log('You pick up the ' + Game.startItem + ' and leave the room.');
-
-  }*/
-
-console.log('The farmer tosses you keys.  "Good luck and farewell", he says. ') //"Give em hell kid"
+    'The farmer sits in the kitchen.  '
+    + '"It\'s about that time", said the farmer.  
+    + 'You nod.  '
+    + '"Good luck and farewell", he says as he tosses you keys.  '
+    //+ '"Give em hell kid", you hear stepping out the door'
+) 
 console.log('')
 readline.question('Press [Enter] to depart for Dark City...', {hideEchoBack: true,})
 console.log('')
@@ -276,66 +283,111 @@ console.log('')
 ////////////////////
 /*
   todo
-    - Story moments at lvl 2 & 5
+    - story moments
     - walk function
     - fight function
  */
 
 Game.phase = 'middle'
 
+// Leave for Dark City
 console.log('You step out the front door...');
 console.log(
     'Outside, the farm house is surrounded by many acres of untended fields.  '
-    + 'Bordering the farmland is thick forest and a two lane highway.  '
+    + 'A silent two lane highway cuts through the middle of the land leading south.  '
 )
+console.log('')
 readline.question('Press [Enter] to continue...', {hideEchoBack: true,})
 console.log('')
+console.log('You start up the old motorcycle in the garage...')
 console.log(
-    'You start up the old motorcycle in the garage.  '
-    + 'It puckers followed by a loud "VROOOM".  '
+    'It puckers, followed by a loud "VROOOM".  '
     + 'You head down the long driveway and set out down Highway 99.  '
-    + 'Endless rolling fields of rural Abbington Valley pass as you fly down the route to Dark City.  '
+    + 'Endless rolling fields of rural Abbington pass as you fly down the road to Dark City.  '
 )
 console.log('')
 readline.question('Press [Enter] to continue...', {hideEchoBack: true,})
 console.log('')
-
-/*
-    Describe entering the city
-    As you approach the city ...
-    Give the user a choice of picking up an item before the city
-    - a weapon
-    - a bribe
-*/
-console.log('The city blooms slowly on the horizon.  '
-    + 'The highway cuts through a quiet impoverished commercial district of a small town just beyond city limits.  '
+console.log('The city blooms slowly on the horizon...')
+console.log(
+    'The highway cuts through a quiet commercial district just beyond city limits.  '
     + 'Save for a few well lit corner stores, most businesses closed early and were nestled behind heavy locked security gates.  '
-    + 'Dark City\'s skyline over shadows the town\'s neighborhoods.  '
-    + 'Run down homes stand out amongst the rows of identical unlit homes as you breeze pass the residential district.  '
+    + 'The town\'s neighborhoods lie in the shadow of Dark City\'s skyline.  '
+    + 'Run down homes litter the rows of identical unlit homes as you breeze pass the residential district.  '
 )
 console.log('')
 readline.question('Press [Enter] to continue...', {hideEchoBack: true,})
 console.log('')
 console.log(
-    'Beep Beeeeeep Beep Beep Beeep.  '
-    + 'The caller is displayed on your helmet visor.'
+    '"Beep Beeeeeep Beep Beep Beeep..."'
+    + 'The caller displayed on your helmet visor.'
 )
-console.log('caller: Ana')
+console.log('')
+console.log('"Caller: Ana"')
 console.log('')
 
-
-// Ana offers intel on a hideout where you can get an item
-readline.keyInYN('Talk to Ana?')
+// Call from Ana 
+    // Unlocks item later 
+readline.keyInYN('Talk to Ana? ')
 console.log('')
 console.log(
-    Game.name + '. '
+'"' + Game.name + '" '
 )
 console.log('')
 readline.question('Press [Enter] to talk...')
-
-
+console.log('')
+console.log('It\'s good to hear your voice.  I hope tonight\'s the night.  ') 
+console.log('')
+readline.question('Press [Enter] to respond...')
+console.log('')
+console.log(
+    'I\'m glad you\'re confident.  '
+    + 'It\'s been chaos in the 9th district since you started pushing back against the Brawlers.  '
+    + 'People are more hopeful than ever now but the Brawlers are more aggresive than they\'ve been in years.  '
+    + 'They\'re at war with anyone who looks at them sour now.  '
+    + 'They know they\'re falling apart. I hope...  '
+) 
+console.log('')
+readline.question('Press [Enter] to agree and reassure...')
+console.log('')
+console.log(
+    'That\'s true.  Well...  Get here soon. '
+)
+console.log('')
+readline.question('Press [Enter] to end call...')
+console.log('')
+console.log('You arrive at the bridge to the city')
+console.log('')
 readline.question('Press [Enter] to enter Dark City...', {hideEchoBack: true,})
 console.log('')
+console.log('City feels eerie...  ')
+console.log(
+    'The highway from the bridge takes you through downtown. '  
+    + 'The corporations are asleep.  (Something feels weird)  '
+    + 'You shift gears take the exit for the ninth district.  '
+    + '(Arrived at the 9th. Gotta go on foot now)  '
+    + 'You park and enter the district.'
+)
+
+/*
+    Middle Phase Story
+    - lvl 2: You save a group of teenagers
+    - lvl 3: You start winning fights, the brawlers no your coming
+    - lvl 4: Ana is taken by the Brawlers
+    - lvl 5: You get information on her whereabouts
+    - lvl 6: The boss traps you (it was a trap) and bounds you
+    - lvl 7: The teenagers return with people from the community
+        - large battle ensuesy  
+
+    Actions
+    - walk
+    - buy
+    - search
+    - inventory
+    - end
+
+*/
+
 
 
 while (Game.phase === 'middle'){
@@ -346,10 +398,15 @@ while (Game.phase === 'middle'){
     
     // Get action
     if (randBuilding < 20){
-        console.log('You come across a suspicious building')
-        Game.action = readline.question('Action? [w]:walk  [b]search building  [end]:end ..')
+        // get random search event text
+        var randSearchEvent = randomNum(Game.eventText.search.length)
+        console.log(Game.eventText.search[randSearchEvent])
+        console.log('')
+        console.log('Actions: [w]:walk  [s]search [i]: inventory [end]:end')
+        Game.action = readline.question('>')
     } else {
-        Game.action = readline.question('Action? [w]:walk  [end]:end ..')
+        console.log('Actions: [w]:walk [i]: inventory [end]:end')
+        Game.action = readline.question('>')
     }
 
     // 
@@ -358,9 +415,19 @@ while (Game.phase === 'middle'){
 
         walk(randEncounter)
     }
-    if (Game.action == 'b' && randBuilding < 20){
-        searchBuilding()
+    if (Game.action == 's' && randBuilding < 20){
+        search()
     }
+    if (Game.action == 'b'){
+        // open store to buy items
+    }
+    if (Game.action == 'i'){
+        console.log('')
+        console.log('==Inventory==')
+        console.log('Cash: $' + Game.cash)
+        console.log('Items: ', Game.items)
+    }
+
     if (Game.action == 'end'){
         Game.phase = 'end'
         console.log('Goodbye')
