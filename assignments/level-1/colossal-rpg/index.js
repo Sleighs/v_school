@@ -19,16 +19,8 @@ var Game = {
 
     // Inventory
     startItems: ['Laser Knife', 'Dark Ale'],
-    equippedWeapon: null,
-    items: [
-        {
-            name: 'Laser Knife',
-            strength: 7,
-            uses: null,
-            hp: null,
-            count: 1
-        },
-    ],
+    equippedItem: null,
+    items: [],
     gameItems: [
         'Laser Knife',
         'Dark Ale',
@@ -45,22 +37,25 @@ var Game = {
             hp: null,
             count: 1,
             rarity: 'common',
+            type: 'weapon',
         },
         {
             name: 'Laser Knife +2',
-            strength: 10,
+            strength: 11,
             uses: null,
             hp: null,
             count: 1,
             rarity: 'uncommon',
+            type: 'weapon',
         },
         {
             name: 'Laser Knife +3',
-            strength: 14,
+            strength: 16,
             uses: null,
             hp: null,
             count: 1,
             rarity: 'rare',
+            type: 'weapon',
         },
         {
             name: 'Dark Ale',
@@ -69,6 +64,7 @@ var Game = {
             hp: 100,
             count: 1,
             rarity: 'rare',
+            type: 'health',
         },
         {
             name: 'Med Kit',
@@ -77,6 +73,7 @@ var Game = {
             hp: 30,
             count: 1,
             rarity: 'common',
+            type: 'health',
         },
         {
             name: 'Med Kit +2',
@@ -85,6 +82,7 @@ var Game = {
             hp: 60,
             count: 1,
             rarity: 'uncommon',
+            type: 'health',
         },
     ],
 
@@ -238,6 +236,7 @@ function addItem(name, num){
                     strength: item.strength,
                     hp: item.hp,
                     count: 1,
+                    type: item.type,
                 }
             }
         })
@@ -249,8 +248,17 @@ function addItem(name, num){
         console.log('')
     }
 }
-function removeItem(){
-
+function removeItem(type){
+    console.log(type + ' removed from inventory.')
+    // Get item index
+    var itemIndex;
+    Game.items.forEach((item, i) => {
+        if (item.name == type){
+            itemIndex = i
+        }
+    })
+    // Remove item
+    Game.items.splice(itemIndex, 1)
 }
 function getItem(rarity){
     // Get rarity
@@ -325,12 +333,44 @@ function useItem(type){
     }
 }
 
+function useItemAction(){
+    console.log('')
+
+    var useableItems = []
+
+    // Get useable items to select from
+    Game.items.forEach(item => {
+        if (item.uses >= 1){
+            useableItems.push(item.name)
+        }
+    })
+
+    // If useable items exist open user selection
+    if (useableItems.length > 0){
+        //Game.useItemState = true
+
+        var items = readline.keyInSelect(useableItems, 'Which item do you want to use?  ');
+
+        // Use item
+        useItem(useableItems[items])
+    } else {
+        console.log('Inventory empty...')
+    }
+}
+
 function displayStats(stat){
     if (stat == 'inventory'){
         console.log('')
         console.log('==Inventory==')
         console.log('Cash: $' + Game.cash)
         console.log('Items: ', Game.items)
+        console.log(
+            'Equipped: ' 
+            + (Game.equippedItem === null 
+                ? 'none' 
+                : Game.equippedItem.name + ' (+' + Game.equippedItem.strength + ' strength)'
+            )
+        )
     }
     if (stat == 'status'){
         console.log('')
@@ -338,8 +378,8 @@ function displayStats(stat){
         console.log('Player: ' + Game.name)
         console.log('Cash: $' + Game.cash)
         console.log('Health: ' + Game.hp)
-        console.log('Strength: ', Game.strength)
-        console.log('Charm: ', Game.charm)
+        console.log('Strength: ' + Game.strength)
+        //console.log('Charm: ', Game.charm)
         console.log('Exp: ', Game.exp)
     }
     if (stat == 'full'){
@@ -348,16 +388,21 @@ function displayStats(stat){
         console.log('Player: ' + Game.name)
         console.log('Cash: $' + Game.cash)
         console.log('Health: ' + Game.hp)
-        console.log('Strength: ', Game.strength)
-        console.log('Charm: ', Game.charm)
-        console.log('Exp: ', Game.exp)
-        console.log('Items: ', Game.items)
+        console.log('Strength: ' + Game.strength)
+        //console.log('Charm: ' + Game.charm)
+        console.log('Exp: ' + Game.exp)
+        console.log('Items: ',  Game.items)
+        console.log(
+            'Equipped: ' 
+            + (Game.equippedItem === null 
+                ? 'none' 
+                : Game.equippedItem.name + ' (+' + Game.equippedItem.strength + ' strength)'
+            )
+        )
     }
 }
-function walk(encounter){
-    console.log('')
-    console.log('Walking on..')
 
+function walk(encounter){
     var randEventNum = randomNum(Game.eventText.walking.length)
 
     if (encounter < 25){
@@ -373,12 +418,6 @@ function search(){
     console.log('')
     console.log('You search the area...')
 
-    randEncounter = randomNum(100)
-    if (randEncounter < 20){
-        //fight
-        fightInit()
-    }
-
     randItem = randomNum(100)
     if (randItem < 10){
         // Add item to inventory
@@ -386,7 +425,16 @@ function search(){
         var randGameItem = randomNum(Game.allItems.length)
         addItem(Game.allItems[randGameItem].name, 1)
     } else {
-        console.log('Nothing here')
+        console.log('Nothing interesting here...')
+    }
+
+    randEncounter = randomNum(100)
+    if (randEncounter < 20){
+        // Fight
+        console.log('')
+        console.log('A wild Brawler attacks!!')
+        console.log('')
+        fightInit()
     }
 }
 
@@ -426,19 +474,22 @@ function attack(weapon, enemy) {
         // Attack min = base strength; max = base + extra
         var attack = Game.strength + randomNum(Math.round(Game.strength * .6))
 
+        if (Game.equippedItem !== null){
+            attack += Game.equippedItem.strength
+        }
+
         Game.currentEnemy.health = Game.currentEnemy.health - attack
         console.log('Attack successful for ' + attack + ' hit points!')
     } else {
         console.log('Attack missed!')
     }
 
-    console.log('')
-
     // Enemy attacks if possible
     if (enemy === true){
-            
+        // Get hit chance
         var enemyHitChance = randomNum(100)
         if (enemyHitChance > 10){
+            // Get attack stength
             var enemyAttack = Game.currentEnemy.strength + randomNum(Math.round(Game.currentEnemy.strength * .4))
             Game.hp = Game.hp - enemyAttack
 
@@ -463,12 +514,45 @@ function updateLevel(exp){
     } 
 }
 
-/*
-var randRarity1 = randomNum(100)
-addItem(getItem(randRarity1), 1)
-addItem(getItem(50), 1)
-addItem(getItem(1), 1)
-*/
+function equipItem(name){
+    var currentItem = null;
+
+    // Finds item in inventory
+    Game.items.forEach((item) => {
+        if (item.name == name){
+            currentItem = item
+        }
+    })
+
+    // If item exists equip item
+    if (currentItem !== null){
+        Game.equippedItem = currentItem
+        console.log(name + ' equipped.')
+    } else {
+        console.log('Couldn\'t equip item.')
+    }
+}
+function equipItemAction(){
+    var equipableItems = []
+
+    // Get useable items to select from
+    Game.items.forEach(item => {
+        if (item.type === 'weapon'){
+            equipableItems.push(item.name)
+        }
+    })
+
+    // If items match criteria ask user to select item
+    if (equipableItems.length > 0){
+        var items = readline.keyInSelect(equipableItems, 'Which item do you want to equip?  ');
+        equipItem(equipableItems[items])
+    } else {
+        console.log('You do not have any equipable items')
+    }
+}
+
+
+
 
 
   ///////////////////
@@ -635,10 +719,46 @@ console.log(
 )
 */
 
+
+
+
+
   ////////////////////
  /// Middle Phase ///
 ////////////////////
 
+function logActions(walk, fight, search){
+    // Check for useable items
+    var useableItems = []
+    Game.items.forEach(item => {
+        if (item.uses >= 1){
+            useableItems.push(item.name)
+        }
+    })
+
+    // Check for equipable items
+    var equipableItems = []
+
+    Game.items.forEach(item => {
+        if (
+            ((Game.equippedItem && item.name !== Game.equippedItem.name) || Game.equippedItem === null)
+            && item.type === 'weapon'
+        ){
+            equipableItems.push(item.name)
+        }
+    })
+
+    console.log(
+        'Actions: '
+        + (fight === true ? '[a]:attack [r]:run ' :  '')
+        + (walk === true ? '[w]:walk ' : '')
+        + (Game.searchAvailable === true ? '[a]search ' : '')
+        + (useableItems.length > 0 ? '[u]:use ' : '')
+        + (equipableItems.length > 0 ? '[e]:equip ' : '')
+        + '[i]:inventory [s]:status [p/print]:status+inv [x]:exit'
+    )     
+}
+// Set game phase
 Game.phase = 'middle'
 
 Game.walkingState = true
@@ -651,9 +771,7 @@ while (Game.phase === 'middle'){
     // if building let user search
     randBuilding = randomNum(100)
 
-    // Check player level
-
-    // Check health regen
+    // Check player level for story events
     
     // Walking
     if (Game.walkingState === true){
@@ -664,15 +782,23 @@ while (Game.phase === 'middle'){
             console.log(Game.eventText.search[randSearchEvent])
             console.log('')
             Game.searchAvailable = true
-            console.log('Actions: [w]:walk  [s]search [i]:inventory [t]:status [p/print]:status+inv [e]:exit')
+            logActions(true, false, true)
+            //console.log('Actions: [w]:walk [a]search [u]:use [e]:equip [i]:inventory [s]:status [p/print]:status+inv [x]:exit')
             Game.action = readline.question('>')
         } else {
-            console.log('Actions: [w]:walk [i]:inventory [t]:status [p/print]:status+inv [e]:exit')
+            logActions(true, false, false)
+            //console.log('Actions: [w]:walk [u]:use [e]:equip [i]:inventory [s]:status [p/print]:status+inv [x]:exit')
             Game.action = readline.question('>')
         }
 
         // if walking allow for actions
+        if (Game.action == 'a' && randBuilding < 20){
+            search()
+        } else 
         if (Game.action == 'w'){
+            console.log('')
+            console.log('Walking on...')
+
             // Recover health each turn
             if (Game.hp <= 95) {
                 var recoveredHealth = randomNum(9) + 1
@@ -683,25 +809,27 @@ while (Game.phase === 'middle'){
             randEncounter = randomNum(100)
 
             walk(randEncounter)
-        }
-        if (Game.action == 's' && randBuilding < 20){
-            search()
-        }
+        } else
         if (Game.action == 'b'){
             // open store to buy items
             console.log('buy items')
-        }
+        } else
         if (Game.action == 'i'){
             displayStats('inventory')
-        }
-        if (Game.action == 't'){
+        } else
+        if (Game.action == 's'){
             displayStats('status')
-        }
+        } else
         if (Game.action == 'p' || Game.action == 'print'){
             displayStats('full')
-        }
-
+        } else
+        if (Game.action == 'u'){
+            useItemAction()
+        } else
         if (Game.action == 'e'){
+            equipItemAction()
+        } else
+        if (Game.action == 'x'){
             Game.phase = 'exit'
             console.log('')
             console.log('Goodbye')
@@ -712,7 +840,8 @@ while (Game.phase === 'middle'){
     if (Game.fightState === true){
         console.log('\\\\\\\\\\\\ Your turn //////')
         console.log('Enemy: ', Game.currentEnemy)
-        console.log('Actions: [a]:attack [r]:run [i]:inventory [t]:status [p/print]:status+inv [e]:exit')
+        logActions(false, true, false)
+        //console.log('Actions: [a]:attack [r]:run [u]:use [e]:equip [i]:inventory [s]:status [p/print]:status+inv [x]:exit')
         Game.action = readline.question('>')
 
         // Action command handlers
@@ -722,7 +851,7 @@ while (Game.phase === 'middle'){
         if (Game.action == 'i'){
             displayStats('inventory')
         } else 
-        if (Game.action == 't'){
+        if (Game.action == 's'){
             displayStats('status')
         } else 
         if (Game.action == 'r'){
@@ -736,38 +865,25 @@ while (Game.phase === 'middle'){
             }
         } else
         if (Game.action == 'u'){
-            var useableItems = []
-
-            // Get useable items to select from
-            Game.items.forEach(item => {
-                if (item.uses !== null && item.uses > 0){
-                    useableItems.push(item.name)
-                }
-            })
-
-            // If useable items exist open user selection
-            if (useableItems.length > 0){
-                Game.useItemState = true
-
-                var items = readline.keyInSelect(useableItems, 'Which item do you want to use?  ');
-
-                // Use item
-                useItem(useableItems[items])
-            } else {
-                console.log('Inventory empty...')
-            }
+            useItemAction()
+        } else
+        if (Game.action == 'e'){
+            equipItemAction()
         }
 
         // Exit game command
-        if (Game.action == 'e'){
+        if (Game.action == 'x'){
             Game.phase = 'exit'
             console.log('Goodbye')
+            console.log('')
         }
 
         // Game ends if player health reaches 0
         if (Game.hp === 0){
             console.log('')
-            console.log('You are defeated')
+            console.log('You are defeated, the journey ends here and end the game with... ')
+            displayStats('full')
+            console.log('')
             Game.phase = 'end'
         }
 
@@ -783,8 +899,6 @@ while (Game.phase === 'middle'){
 
             if (randItem < 5){
                 console.log('Item found!!')
-                //var randGameItem = randomNum(Game.allItems.length)
-                //addItem(Game.allItems[randGameItem].name, 1)
 
                 var randRarity = randomNum(100)
                 addItem(getItem(randRarity), 1)
@@ -807,6 +921,8 @@ while (Game.phase === 'middle'){
             Game.walkingState = true
         }
     }
+
+    Game.action = null
 
     // Update player level
     updateLevel(Game.exp)
