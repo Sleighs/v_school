@@ -551,6 +551,37 @@ function equipItemAction(){
     }
 }
 
+function logActions(walk, fight, search){
+    // Check for useable items
+    var useableItems = []
+    Game.items.forEach(item => {
+        if (item.uses >= 1){
+            useableItems.push(item.name)
+        }
+    })
+
+    // Check for equipable items
+    var equipableItems = []
+    Game.items.forEach(item => {
+        // If item isn't already equipped add to equippable items array
+        if (
+            ((Game.equippedItem && item.name !== Game.equippedItem.name) || Game.equippedItem === null)
+            && item.type === 'weapon'
+        ){
+            equipableItems.push(item.name)
+        }
+    })
+
+    console.log(
+        'Actions: '
+        + (fight === true ? '[a]:attack [r]:run ' :  '')
+        + (walk === true ? '[w]:walk ' : '')
+        + (Game.searchAvailable === true ? '[a]search ' : '')
+        + (useableItems.length > 0 ? '[u]:use ' : '')
+        + (equipableItems.length > 0 ? '[e]:equip ' : '')
+        + '[i]:inventory [s]:status [p/print]:status+inv [x]:exit'
+    )     
+}
 
 
 
@@ -727,37 +758,6 @@ console.log(
  /// Middle Phase ///
 ////////////////////
 
-function logActions(walk, fight, search){
-    // Check for useable items
-    var useableItems = []
-    Game.items.forEach(item => {
-        if (item.uses >= 1){
-            useableItems.push(item.name)
-        }
-    })
-
-    // Check for equipable items
-    var equipableItems = []
-
-    Game.items.forEach(item => {
-        if (
-            ((Game.equippedItem && item.name !== Game.equippedItem.name) || Game.equippedItem === null)
-            && item.type === 'weapon'
-        ){
-            equipableItems.push(item.name)
-        }
-    })
-
-    console.log(
-        'Actions: '
-        + (fight === true ? '[a]:attack [r]:run ' :  '')
-        + (walk === true ? '[w]:walk ' : '')
-        + (Game.searchAvailable === true ? '[a]search ' : '')
-        + (useableItems.length > 0 ? '[u]:use ' : '')
-        + (equipableItems.length > 0 ? '[e]:equip ' : '')
-        + '[i]:inventory [s]:status [p/print]:status+inv [x]:exit'
-    )     
-}
 // Set game phase
 Game.phase = 'middle'
 
