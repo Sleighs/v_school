@@ -12,7 +12,7 @@ var Game = {
     hp: 100,
     hpMax: 100,
     strength: 10,
-    charm: 10,
+    //charm: 10,
     exp: 0,
     startItem: null,
     cash: 50,
@@ -21,14 +21,8 @@ var Game = {
     startItems: ['Laser Knife', 'Dark Ale'],
     equippedItem: null,
     items: [],
-    gameItems: [
-        'Laser Knife',
-        'Dark Ale',
-        'Baseball Bat',
-        'Brawler Chain',
-        'Crowbar',
-        'Med Kit',
-    ],
+
+    // Game items
     allItems: [
         {
             name: 'Laser Knife',
@@ -86,7 +80,7 @@ var Game = {
         },
     ],
 
-    // State
+    // Game State
     gamePhase: 'intro', // intro, beginning, middle, end
     fightState: false,
     walkingState: false,
@@ -116,7 +110,6 @@ var Game = {
             'An enemy thief approaches...',
             'A Brawler wants to fight...',
         ]
-    
     },
 
     // Enemies
@@ -126,6 +119,7 @@ var Game = {
             health: 31,
             strength: 10,
             exp: 7,
+            type: 'easy',
         },
         {
             name: 'Thief',
@@ -182,11 +176,12 @@ var Game = {
         strength: 15,
         state: 'active',
     }
-
 }
 
 var randEncounter, randBuilding, randItem;
 
+
+// Item functions
 function Item(name, uses, strength, hp, count){
     this.name = name
     this.uses = uses
@@ -596,9 +591,9 @@ Game.phase = 'beginning'
 console.log('')
 console.log('============Introduction============')
 console.log(
-    'Miles down the nearby two lane highway is a sprawling city.  '
-    + 'Electric lights, gangs and darkness have flooded every corner of the technopolis.  '
-    + 'A place of endless possibilites ruled by power and might.  '
+    'Miles away at the end of Highway 82 lies a vast city overlooking the ocean.  '
+    + 'Electric lights, cybernetic gangs and corporations have flooded every corner of the metropolis.  '
+    + 'A place of endless possibilites ruled by might and tenacity.  '
     + 'Fortune and glory lies at the top of Dark City\'s underworld, however nearly all who come to conquer it find despair.  '
 )
 console.log('')
@@ -623,7 +618,7 @@ console.log('4:50pm: "Brawlers planning something big tonight! It\s finally goin
 console.log('4:30pm: "NINE DICE CLUB 10PM -Anonymous" ')
 
 // Choose start Item
-    // While player is in room they can look around before leaving
+    // (While player is in room they can look around before leaving)
 console.log('')
 readline.question('Press [Enter] to continue...', {hideEchoBack: true,})
 console.log('')
@@ -671,7 +666,7 @@ console.log('')
 console.log('You start up the old motorcycle in the garage...')
 console.log(
     'It puckers, followed by a loud "VROOOM".  '
-    + 'You head down the long driveway and set out down Highway 99.  '
+    + 'You head down the long driveway and set out down Highway 82.  '
     + 'Endless rolling fields of rural Abbington pass as you race to Dark City.  '
 )
 console.log('')
@@ -695,8 +690,7 @@ console.log('')
 console.log('"Caller: Ana"')
 console.log('')
 
-// Call from Ana that unlocks later event
-
+// Call that unlocks later event
 if (readline.keyInYN('Talk to Ana?')){
     console.log('')
     console.log(
@@ -743,6 +737,7 @@ console.log(
 console.log('')
 readline.question('Press [Enter] to enter District 9...', {hideEchoBack: true,})
 /* 
+//(More Setting)
 console.log('You look up...')
 console.log(
     'High rise apartments loom over the 9th district neighborhoods.  '
@@ -768,7 +763,7 @@ while (Game.phase === 'middle'){
 
     console.log('')
     
-    // if building let user search
+    // For random building event
     randBuilding = randomNum(100)
 
     // Check player level for story events
@@ -783,11 +778,9 @@ while (Game.phase === 'middle'){
             console.log('')
             Game.searchAvailable = true
             logActions(true, false, true)
-            //console.log('Actions: [w]:walk [a]search [u]:use [e]:equip [i]:inventory [s]:status [p/print]:status+inv [x]:exit')
             Game.action = readline.question('>')
         } else {
             logActions(true, false, false)
-            //console.log('Actions: [w]:walk [u]:use [e]:equip [i]:inventory [s]:status [p/print]:status+inv [x]:exit')
             Game.action = readline.question('>')
         }
 
@@ -841,7 +834,6 @@ while (Game.phase === 'middle'){
         console.log('\\\\\\\\\\\\ Your turn //////')
         console.log('Enemy: ', Game.currentEnemy)
         logActions(false, true, false)
-        //console.log('Actions: [a]:attack [r]:run [u]:use [e]:equip [i]:inventory [s]:status [p/print]:status+inv [x]:exit')
         Game.action = readline.question('>')
 
         // Action command handlers

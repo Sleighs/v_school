@@ -4,10 +4,13 @@
 
 
 ## Items
-- laser knife
-    - adds +5 attack
-- dark ale
-    - allows for player to bribe characters
+- Laser Knife
+    - adds attack
+- Dark Ale
+    - Restores full health
+- Med Kit
+    - Restores health
+
 
 ##
 - actions 
