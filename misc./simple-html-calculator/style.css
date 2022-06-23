@@ -1,0 +1,22 @@
+* {
+    box-sizing: border-box;
+    font-size: 0px;
+}
+
+body {
+    background-color: rgb(31, 34, 45);
+    color: black;
+}
+
+#app {
+    margin: auto;
+    max-width: 600px;
+    width: 90%;
+    padding: 10% 0;
+}
+
+.calc-container {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: auto;
+}
