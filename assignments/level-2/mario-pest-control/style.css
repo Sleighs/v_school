@@ -1,0 +1,129 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(135, 204, 232);
+    color:rgb(27, 84, 98);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#app {
+    margin: auto;
+    max-width: 600px;
+    width: 90%;
+    padding: 10% 0;
+}
+
+h1 {
+    text-align: center;
+}
+#pest-list {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: auto;
+}
+
+/* make a grid */
+.list-item {
+    border: solid 1pt rgb(27, 84, 98);
+    background-color: rgb(224, 246, 251);
+    display: grid;
+    font-size: 28px;
+    line-height: 2.5;
+}
+.Goombas-item {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    display: grid;
+    grid-template-columns: 50% 15% 15% 10% 10%;
+}
+.Bob-ombs-item {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    display: grid;
+    grid-template-columns: 50% 15% 15% 10% 10%;
+}
+.Cheep-cheeps-item {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    display: grid;
+    grid-template-columns: 50% 15% 15% 10% 10%;
+}
+.total-row {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start: 4;
+    grid-row-end: 5;
+    display: grid;
+    grid-template-columns: 50% 15% 15% 10% 10%;
+}
+.list-name {
+    border: solid 1pt rgb(27, 84, 98);
+    display: inline-block;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    padding: 1%;
+}
+.list-coins {
+    border: solid 1pt rgb(27, 84, 98);
+    display: inline-block;
+    text-align: center;
+
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+
+    padding: 1%;
+}
+.list-count {
+    border: solid 1pt rgb(27, 84, 98);
+    display: inline-block;
+    text-align: center;
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    font-size: 28px;
+    padding: 1%;
+}
+.list-increase-btn,
+.list-decrease-btn {
+    border: solid 1pt rgb(27, 84, 98);
+    background-color: rgb(179, 211, 225);
+    display: inline-block;
+    text-align: center;
+}
+.list-increase-btn {
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}   
+.list-decrease-btn {
+    grid-column-start: 5;
+    grid-column-end: 6;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+.item-pic {
+    height: 50px;
+    float: left;
+    margin: 2%;
+    margin-right: 20px;
+}
+
+#footer {
+    margin: 5% auto;
+    text-align: center;
+    font-size: .8em;
+}
