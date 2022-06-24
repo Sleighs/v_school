@@ -39,3 +39,6 @@ body {
 .clicks-item {
     margin: auto;
 }
+#clear-clicks-btn {
+    color: rgb(31, 34, 45);
+}

@@ -1,16 +1,14 @@
-var mouse = {
-    x: 0,
-    y: 0,
-    
-}
+var mouse = { x: 0, y: 0, }
 var clickCount = 0
 var clicks = []
+var newList = false
 
 var clickLogEle = document.getElementById('click-log')
 var logXEle = document.getElementById('logx')
 var logYEle = document.getElementById('logy')
 var clicksEle = document.getElementById('clicks')
 
+// Listens for mouse movement
 addEventListener("mousemove", function(event) {
     mouse.x = event.pageX;
     mouse.y = event.pageY;
@@ -21,14 +19,54 @@ addEventListener("mousemove", function(event) {
     logYEle.innerHTML = 'y: ' + event.pageY
 });
 
+// Logs and displays users clicks
+var clickEvent = (event) => {
+    // If clear list is clicked do not add button click x and y to list
+    if (newList === true){
+        newList = false
+        displayClicks()
+        return
+    }
 
-addEventListener("click", function(event) {
+    // Update click count
     clickCount++
-    clicks.push([event.pageX, event.pageY, clickCount])
-    displayClicks()
-})
 
+    // Add click to list
+    clicks.push([event.pageX, event.pageY, clickCount])
+    
+    // Display list
+    displayClicks()
+}
+
+addEventListener("click", clickEvent)
+
+var intervalCount = 30
+
+// Countdown interval
+const clickInterval = setInterval(()=>{
+    //console.log('interval', intervalCount)
+
+    // Show countdown
+    var timeEle = document.getElementById('click-time')
+    if (intervalCount == 0){
+        timeEle.innerText = 'Time: 0'
+    } else {
+        timeEle.innerText = 'Time left: ' + intervalCount
+    }
+    intervalCount--
+}, 1000)
+
+const clickEnd = setTimeout(()=>{
+    //console.log('interval cleared')
+
+    //remove event listener
+    removeEventListener('click', clickEvent)
+    clearInterval(clickInterval)
+}, 30000)
+
+// Display stored clicks
 function displayClicks(){
+    
     // Clear list before populating
     var clicksItems = document.getElementsByClassName('clicks-item')
     
@@ -56,16 +94,29 @@ function displayClicks(){
 
         clicksEle.appendChild(itemEle)
     })
+
+    createCookie('clicks', clicks)
+
 }
 
-displayClicks()
+// Clear cookie and list
+document.getElementById('clear-clicks-btn').addEventListener('click', () => {
+    deleteCookie('clicks')
+    clicks = []
+    newList = true;
+    displayClicks()
+})
 
-// add interval and clear at 30 seconds
-    // show interval countdown on page
 
-// add local storage
-/*
+window.onload = () => {
+    // Check local storage for clicks array
+    if (readCookie('clicks') !== null){
+        // Retrieve saved clicks from local storage
+        clicks = JSON.parse(readCookie('clicks'))
+    }
 
+    displayClicks()
+}
 
 // Create cookie
 const createCookie = (key, value) => {
@@ -75,7 +126,6 @@ const createCookie = (key, value) => {
         + JSON.stringify(value) 
         +";max-age=86400;" // Stored for 1 day
     ;
-    
     document.cookie = cookie;
 }
 
@@ -102,7 +152,5 @@ const readCookie = (name) => {
 // Delete cookie
 const deleteCookie = (name) => {
     createCookie(name, "", -1);
-    console.log('cookie deleted', readCookie("saved-list") )
+    //console.log('cookie deleted', readCookie("clicks") )
 }
-
-*/
