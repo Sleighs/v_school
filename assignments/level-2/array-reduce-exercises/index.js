@@ -1,6 +1,6 @@
 // 1
 function total(arr) {
-    return arr.reduce((a, b) => a+ b)
+    return arr.reduce((a, b) => a + b)
 }
  
 console.log(total([1,2,3])); // 6

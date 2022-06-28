@@ -1,84 +1,95 @@
-html {
-	margin: 0;
-	padding: 0;
+* {
     box-sizing: border-box;
 }
 
+html {
+	margin: 0;
+	padding: 0;
+}
 body { 
 	color: #555753; 
+    font: 100% georgia, sans-serif;
     border: 0; 
 	padding: 0;
 }
-
+p {
+	text-align: justify;
+}
+h3 { 
+	font: normal 1.4em georgia, sans-serif;
+	letter-spacing: 1px; 
+	margin-bottom: 0; 
+	color: #7D775C;
+}
+#wrapper {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+#header {
+    height: 230px;
+    width: 100%;
+    background: url(assets/huntington.jpeg);
+    color: white;
+}
 #container {
     display: grid;
     grid-template-columns: 67% 33%;
     grid-template-rows: auto;
+    width: 100%;
 }
 #content-container {
-    background-color: #dbedcd;
+    height: fit-content;
+    border: dotted 1pt black;
     grid-column-start: 1;
     grid-column-end: 2;
-
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: 34% 33% 33%;
 }
 #sidebar-container {
     background-color: rgb(216, 232, 247);
     grid-column-start: 2;
     grid-column-end: 3;
 
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: 34% 33% 33%;
+    width: 100%;
 }
 
-.content, .sidebar {
-    margin: auto;
-    padding: 2% 4%;
+.content, 
+.sidebar {
+    width: 100%;
+    padding: 2% 5%;
+    display: block;
 }
 .content-row1 {
-    height: 720px;
-
-    border: dotted 1pt gray;
-
+    height: fit-content;
+    border: dotted 2pt red;
 }
 .content-row2 {
-    height: 550px;
-
-    border: dotted 1pt white;
+    height: fit-content;
+    border: dotted 2pt blue;
 }
 .content-row3 {
-    height: 700px;
-
-    border: dotted 1pt gray;
+    height: fit-content;
+    border: dotted 2pt red;
 }
 
 #content1 {
-    grid-row-start: 1;
-    grid-row-end: 2;
+    background-color: white;
 }
 #content2 {
-    grid-row-start: 2;
-    grid-row-end: 3;
+    background-color: #dbedcd;
 }
 #content3 {
-    grid-row-start: 3;
-    grid-row-end: 4;
+    background-color: white;
 }
 
 #sidebar1 {
-    grid-row-start: 1;
-    grid-row-end: 2;
+
 }
 #sidebar2 {
-    grid-row-start: 2;
-    grid-row-end: 3;
+
 }
 #sidebar3 {
-    grid-row-start: 3;
-    grid-row-end: 4;
+
 }
 
 .sidebar-content {
@@ -92,12 +103,42 @@ body {
 }
 #footer {
     background-color: rgb(64, 116, 107);
-    grid-column-start: 1;
-    grid-column-end: 3;
 }
 
 #footer2 {
     background-color: rgb(14, 81, 67);
-    grid-column-start: 1;
-    grid-column-end: 3;
+}
+
+@media only screen and (max-width: 1130px) {
+    #header {
+
+    }
+    #container {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 75% 25%;
+    }
+    #content-container {
+        grid-row-start: 1;
+        grid-row-end: 2;
+        grid-column-start: 1;
+        grid-column-end: 2;
+    }
+    #sidebar-container {
+        background-color: rgb(216, 232, 247);
+        grid-row-start: 2;
+        grid-row-end: 3;
+        grid-column-start: 1;
+        grid-column-end: 2;
+
+
+        width: 100%;
+    }
+
+    .sidebar-content {
+        width: 100%;
+        padding: 2% 5%;
+        margin: 2% auto;
+    }
+
 }

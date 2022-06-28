@@ -12,6 +12,7 @@ function stringItUp(arr){
 
 console.log(stringItUp([2, 5, 100])); // ["2", "5", "100"]
 
+// 3
 function capitalizeNames(arr){
     return arr.map( item => {
         var arr = []
