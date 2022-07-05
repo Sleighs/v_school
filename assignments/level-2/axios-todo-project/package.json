@@ -1,0 +1,16 @@
+{
+  "name": "axios-todo-project",
+  "version": "1.0.0",
+  "description": "You will be creating a Todo list.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "author": "Samuel Wright",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2"
+  }
+}
