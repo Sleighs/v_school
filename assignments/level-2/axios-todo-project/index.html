@@ -7,35 +7,40 @@
     <link rel="stylesheet" href="style.css">
 
     <title>Axios Todo Project</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cabin&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="title-bar">
-        <h1 class="title">Axios Todo List</h1>
+        <h1 class="title">Todo List</h1>
     </div>
     <div class="app">
+        <div class="todos">
+            <ul id="list"></ul>
+        </div>
+
+        <hr>
+
         <div class="title-bar">
             <h3 class="title">Add Item</h3>
         </div>
         <form name="addItem" id="add-todo">
-            <label class="label" for="title">Item name</label>
-            <input class="input" name="title" id="title" />
-            <button>submit</button>
+            <label class="label" for="title">Title</label>
+            <input class="input" name="title" id="title-input" />
+            <label class="label" for="description">Description</label>
+            <input class="input" name="description" id="description-input" />
+            <label class="label" for="image-url">Image Url</label>
+            <input class="input" name="image-url" id="image-url-input" />
+            <label class="label" for="price">Price </label>
+            <input class="input" type="number" name="price" id="price-input" />
+            <button class="submit-button" id="submit-button">Submit</button>
         </form>
-        <div class="todos">
-            <div class="title-bar">
-                <h3 class="title">list of items</h3>
-            </div>
-            <hr>
-            <ul id="list">
-                            
-            </ul>
-        </div>
     </div>
 
-    <!--script src="./node_modules/axios/dist/axios.min.js"></script-->
+    <script src="./node_modules/axios/dist/axios.min.js"></script>
 
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    
     <script src="index.js"></script>
 </body>
 </html>

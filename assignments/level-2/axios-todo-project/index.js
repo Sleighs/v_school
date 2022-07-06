@@ -1,95 +1,60 @@
-
-axios.get('https://api.vschool.io/samuelwright/todo')
-    .then(res => {
-        listData.apiData = res.data
-        //console.log(res.data)
-    })
-    .catch(error => console.log(error))
-
+  //////////////////////////
+ /// Axios Todo Project ///
+//////////////////////////
 
 // A place to store the app's data
 var listData = {
-    listEntries: []
+
 }
 
 // Add listener to button
 document.getElementsByName("addItem")[0].addEventListener("submit", function(e){
     // Create new list item
-    createListItem(e)
+    createListItem()
 
     // Prevent page refresh
     e.preventDefault()
 })
 
-const newId = () => {  
-    var newNum = Math.floor(Math.random() * 999999999999)
-    var id = newNum
-    
-    // Check if id is already used
-    for (var i = 0; i < listData.listEntries.length; i++){
-        // Replace id if duplicate exists
-        if (listData.listEntries[i][0] === newNum){
-            id = newId()
-        }
-    }
-
-    return id
-}
-
-const createListItem = (e) => {
+const createListItem = () => {
     // Get input text element
-    var item = document.getElementById("title")
-    
-    // Create unique-id
-    var id = newId()
+    var title = document.getElementById("title-input")
+    var description = document.getElementById("description-input")
+    var imageUrl = document.getElementById("image-url-input")
+    var price = document.getElementById("price-input")
 
-    // Store list data
-    listData.listEntries.push([id, item.value])
+    var newTodo = {
+        title: title.value, // required
+        description: description.value,
+        price: price.value, 
+        imgUrl: imageUrl.value,
+        completed: false,
+    };
 
-    // Display new list
-    displayList()
+    if (title.value === null || title.value == '') {
+        console.log('title required!')
+    } else {
+        axios.post('https://api.vschool.io/samuelwright/todo', newTodo)
+            .then(function(res){
+                getListData()
+            })
+            .catch(error => console.log(error))
+    }
 }
 
 
-const deleteEntry = (node, id) => {
-    // Remove node from page
-    node.remove()
-
-    // Create new array
-    var newArr = []
-
-    // Populate new array with current list, excluding deleted item
-    for (var i = 0; i < listData.listEntries.length; i++){
-        if (listData.listEntries[i][0] !== id){
-            newArr.push(listData.listEntries[i])
-        }
-    }
-
-    // Store new array
-    listData.listEntries = newArr
-
-    // Display new list
-    displayList()
+const deleteEntry = (id) => {
+    axios.delete('https://api.vschool.io/samuelwright/todo/' + id)
+        .then(function(res){
+            getListData()
+        })
 }
 
-const editEntry = (e, id, newText) => {
-    // Create new array
-    var newArr = []
-
-    // Populate new array with current list, updating the new text
-    for (var i = 0; i < listData.listEntries.length; i++){
-        if (listData.listEntries[i][0] === id){
-            newArr.push([id, newText])
-        } else {
-            newArr.push(listData.listEntries[i])
-        }
-    }
-
-    // Store new array
-    listData.listEntries = newArr
-
-    // Display new list
-    displayList()
+const editEntry = (id, updatedItem) => {
+    axios.put('https://api.vschool.io/samuelwright/todo/' + id, updatedItem)
+        .then(function(res){
+            getListData()
+        })
 }
 
 const displayList = () => {
@@ -100,79 +65,179 @@ const displayList = () => {
         listElements[0].parentNode.removeChild(listElements[0]);
     }
 
-    console.log(listData)
+    //console.log(listData)
 
-    // Get and display list data
-    axios.get('https://api.vschool.io/samuelwright/todo')
-        .then(res => {
-            listData.apiData = res.data[0]
-            //console.log(res.data)
-        })
-        .catch(error => console.log(error))
-
-   
+    // Display list data
     for (var i = 0; i < listData.apiData.length; i++){
-        let id = listData.apiData[i]._id //listData.listEntries[i][0]
-        let text = listData.apiData[i].title//listData.listEntries[i][1]
-        console.log(text, id)
+        let id = listData.apiData[i]._id
+        let title = listData.apiData[i].title
+        let description = listData.apiData[i].description
+        let imageUrl = listData.apiData[i].imgUrl
+        let completed = listData.apiData[i].completed
+        let price = listData.apiData[i].price
+        
+        //console.log('item ' + i + ':', id)
 
         // Create li element
         var newListItem = document.createElement("li")
         newListItem.setAttribute("class", "list-item")
+        newListItem.setAttribute("data-id", id)
 
-        // Add text to li element 
-        const itemText = document.createElement("div")
-        itemText.innerHTML = text
-        newListItem.appendChild(itemText)
+        // Create containers
+        var listItemTitle = document.createElement("div")
+        listItemTitle.setAttribute("class", "list-item__top")
+        var listItemDes = document.createElement("div")
+        listItemDes.setAttribute("class", "list-item__des")
+        var listItemBtns = document.createElement("div")
+        listItemBtns.setAttribute("class", "list-item__btns")
+
+        var checkbox = completed
+
+        //  Create checkbox element
+        var completedEle = document.createElement("div")
+        var completedCheckbox = document.createElement("input")
+        completedEle.setAttribute("class", "completed-container")
+        completedCheckbox.setAttribute("class", "completed-checkbox")
+        completedCheckbox.type = 'checkbox'
+        completedCheckbox.checked = completed
+        completedCheckbox.addEventListener('change', event => {
+            editEntry(id, {
+                title: title,
+                description: description,
+                imgUrl: imageUrl,
+                completed: event.target.checked,
+            })
+        })
+        completedEle.appendChild(completedCheckbox)
+        listItemTitle.appendChild(completedEle)
+
+        // Add title, description and image elements to li element 
+        const itemTitle = document.createElement("div")
+        itemTitle.innerHTML = title
+        itemTitle.setAttribute("class", "input-title")
+            // If completed add strike though
+        if (completed){
+            itemTitle.style.textDecoration = 'line-through'
+        }
+        listItemTitle.appendChild(itemTitle)
+
+        // Price element
+        const itemPrice = document.createElement("div")
+        itemPrice.innerText = '$' + price
+        itemPrice.setAttribute("class", "input-price")
+        
+        if (price !== null && price > 0){
+            listItemTitle.appendChild(itemPrice)
+        }
+
+        // Description element
+        const itemDes = document.createElement("div")
+        itemDes.innerHTML = description
+        itemDes.setAttribute("class", "input-description")
+        listItemTitle.appendChild(itemDes)
+
+        // Image element
+        const itemImgContainer = document.createElement("div")
+        itemImgContainer.setAttribute("class", "input-image__container")
+        const itemImg = document.createElement("img")
+        itemImg.src = imageUrl
+        itemImg.setAttribute("class", "input-image")
+        itemImgContainer.appendChild(itemImg)
 
         // Create edit and delete button
         const editButton = document.createElement("button")
         const deleteButton = document.createElement("button")
 
         // Edit button
-        editButton.textContent = 'edit'
+        editButton.textContent = 'Edit'
         editButton.setAttribute("class", "edit-button")
         editButton.addEventListener('click', (e) => {
-            //var currentId = id;
-            console.log('id', id)
-            // Replace list text with input and button
-            var editEle = document.createElement('div')
-            var inputEle = document.createElement('input')
+            var listEleToEdit = document.querySelectorAll('[data-id ="' + id + '"]');
+
+            // Clears out previous elements
+            while (listEleToEdit[0].childNodes.length > 0){
+                listEleToEdit[0].removeChild(listEleToEdit[0].childNodes[0]);
+            }
+
+            var editTitle = title
+            var editDes = description
+            var editImageUrl = imageUrl
+            var editPrice = price
+
+            // Add title input element
+            var editTitleEle = document.createElement('input')
+            editTitleEle.placeholder = 'Title'
+            editTitleEle.classList.add('input')
+            editTitleEle.value = title
+            editTitleEle.addEventListener('change', event => {
+                editTitle = event.target.value
+            })
+            // Add description input element
+            var editDescriptionEle = document.createElement('input')
+            editDescriptionEle.placeholder = 'Description'
+            editDescriptionEle.classList.add('input')
+            editDescriptionEle.value = description
+            editDescriptionEle.addEventListener('change', event => {
+                editDes = event.target.value
+            })
+            // Add image input element
+            var editImageUrlEle = document.createElement('input')
+            editImageUrlEle.placeholder = 'Image Url'
+            editImageUrlEle.classList.add('input')
+            editImageUrlEle.value = imageUrl
+            editImageUrlEle.addEventListener('change', event => {
+                editImageUrl = event.target.value
+            })
+            // Add price input element
+            var editPriceEle = document.createElement('input')
+            editPriceEle.placeholder = 'Price'
+            editPriceEle.classList.add('input')
+            editPriceEle.value = price
+            editPriceEle.addEventListener('change', event => {
+                editPrice = event.target.value
+            })
+            
+            // Add elements to list element
+            listEleToEdit[0].appendChild(editTitleEle)
+            listEleToEdit[0].appendChild(editDescriptionEle)
+            listEleToEdit[0].appendChild(editImageUrlEle)
+            listEleToEdit[0].appendChild(editPriceEle)
+
+            // Create and add Save button
             var submitEle = document.createElement('button')
-            inputEle.value = text
-            submitEle.textContent = 'Update'
+            submitEle.textContent = 'Save'
+            listEleToEdit[0].appendChild(submitEle)
 
             // Add listener to button
             submitEle.addEventListener('click', (e) => {
-                editEntry(e, id, inputEle.value)
-                console.log(e, id, inputEle.value)
+                editEntry(id, {
+                    title: editTitle,
+                    description: editDes,
+                    imgUrl: editImageUrl,
+                    price: editPrice,
+                    completed: checkbox,
+                })
             })
-
-            // Add element to page
-            editEle.appendChild(inputEle)
-            editEle.appendChild(submitEle)
-            e.target.parentNode.appendChild(editEle)
-            editButton.remove()
-            deleteButton.remove()
-            
         })
-        newListItem.appendChild(editButton)
-
+        listItemBtns.appendChild(editButton)
+        
         // Delete button
-        deleteButton.textContent = 'X'
+        deleteButton.textContent = 'Delete'
         deleteButton.setAttribute("class", "delete-button")
         deleteButton.addEventListener('click', (e) => {
             // Send event parent node to delete from html 
                 // Send id to delete from storage
-            deleteEntry(e.target.parentNode, id)
+            deleteEntry(id)
         })
-        newListItem.appendChild(deleteButton)
+        listItemBtns.appendChild(deleteButton)
+
+        newListItem.appendChild(itemImgContainer)
+        newListItem.appendChild(listItemTitle)
+        //newListItem.appendChild(listItemDes)
+        newListItem.appendChild(listItemBtns)
 
         document.getElementById("list").appendChild(newListItem)
     }
-
-    // Store list in cookie
-    //createCookie("saved-list", listData.listEntries)
 }
 
 /*const getDate = () => {
@@ -187,86 +252,17 @@ const displayList = () => {
 
 }*/
 
-// Create cookie
-const createCookie = (key, value) => {
-    const cookie = 
-        key 
-        + "=" 
-        + JSON.stringify(value) 
-        +";max-age=86400;" // Stored for 1 day
-    ;
-    
-    document.cookie = cookie;
-}
-
-// Read cookie
-const readCookie = (name) => {
-    let key = name + "=";
-    let cookies = document.cookie.split(';');
-
-    for (var i = 0; i < cookies.length; i++) {
-        let cookie = cookies[i];
-
-        while (cookie.charAt(0) === ' ') {
-            cookie = cookie.substring(1, cookie.length);
-        }
-
-        if (cookie.indexOf(key) === 0) {
-            return cookie.substring(key.length, cookie.length);
-        }
+// Get all todos
+async function getListData() {
+    try {
+        const response = await axios.get('https://api.vschool.io/samuelwright/todo');
+        listData.apiData = response.data
+        displayList()
+    } catch (error) {
+        console.error(error);
     }
-
-    return null;
 }
-
-// Delete cookie
-const deleteCookie = (name) => {
-    createCookie(name, "", -1);
-    console.log('cookie deleted', readCookie("saved-list") )
-}
-
 
 window.onload = () => {
-    var deleteSavedListEle = document.createElement('button')
-    deleteSavedListEle.textContent = 'clear list'
-    deleteSavedListEle.addEventListener('click', ()=>{
-        // Clears cookie and page
-        deleteCookie('saved-list')
-        listData.listEntries = []
-        displayList()
-    })
-
-    //document.getElementsByClassName('main')[0].appendChild(deleteSavedListEle)
-
-    // Get saved
-    if (readCookie("saved-list") && JSON.parse(readCookie("saved-list").length > 0)){
-        listData.listEntries = JSON.parse(readCookie("saved-list"))
-
-        console.log('cookie', JSON.parse(readCookie("saved-list")))
-    }
-
-    displayList()
+    getListData()
 }
-
-
-// Axios funtions
-/* 
-data model
-{
-    title: {
-        type: String,
-        required: true
-    },
-    description: String,
-    price: Number,
-    imgUrl: String,
-    completed: Boolean,
-    sessionId: {
-        type: String,
-        required: true
-    },
-    _id: String
-}
-*/
-
-// Get all todo data

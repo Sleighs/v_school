@@ -28,7 +28,7 @@ Use postman to get those first few todos in there with some images so you can st
 ### **Part 2 - POST**
 
 - The user can add new todos to their list. The new item should be posted to the todo API so a future reload of the page will still display that new todo item. Making the new todo appear without a refresh is extra credit, but you're encouraged to attempt it.
-- A user should be able to geive the item a title.
+- A user should be able to give the item a title.
 - A user should be able to give the item a price.
 - A user should be able to give the item a description.
 - A user should be able to attach an imgUrl to the item
