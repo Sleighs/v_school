@@ -83,6 +83,7 @@ body {
     width: 85%;
     display: block;
     margin: auto;
+    margin-bottom: -25%;
 }
 .input-title {
     display: inline-block;

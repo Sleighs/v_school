@@ -1,0 +1,24 @@
+.nav-container {
+    height: 80px;
+
+    color: rgb(255, 255, 255);
+}
+.nav {
+    float: right;
+    width: 70%;
+}
+.nav-title {
+    display: inline-block;
+    float: left;
+}
+.nav-links-container {
+
+    float: right;
+    display: inline-block;
+    width: fit-content;
+}
+.nav-link {
+    margin: auto 20px;
+    display: inline-block;
+
+}

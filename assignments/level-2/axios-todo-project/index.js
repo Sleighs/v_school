@@ -65,8 +65,6 @@ const displayList = () => {
         listElements[0].parentNode.removeChild(listElements[0]);
     }
 
-    //console.log(listData)
-
     // Display list data
     for (var i = 0; i < listData.apiData.length; i++){
         let id = listData.apiData[i]._id
