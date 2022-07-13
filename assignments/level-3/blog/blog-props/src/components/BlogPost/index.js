@@ -10,10 +10,12 @@ export default function BlogPost(props) {
     } = props
 
   return (
-    <div  className='blog-post'>
-        <div  className='blog-post__container'>
-            <p className='blog-post__title'>{title}</p>
-            <p className='blog-post__subtitle'>{subTitle}</p>
+    <div className='blog-post'>
+        <div className='blog-post__container'>
+            <div className='blog-post__title-container'>
+                <p className='blog-post__title'>{title}</p>
+                <p className='blog-post__subtitle'>{subTitle}</p>
+            </div>
             <p className='blog-post__text'>
                 Posted by <span className='blog-post__author'>{author}</span> on <span className='blog-post__date'>{date}</span>
             </p>

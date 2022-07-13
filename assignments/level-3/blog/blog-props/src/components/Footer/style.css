@@ -1,0 +1,29 @@
+.footer-container {
+    margin: 3% auto;
+    padding: 5% 0;
+    height: fit-content;
+    width: 100%;
+}
+.footer-icons {
+    border: dotted 1pt blue;
+    margin: auto;
+}
+.footer-icon {
+    height: 54px;
+    width: 54px;
+    
+}
+.twitter-icon {
+    background-image: url(../../assets/twitter.png);
+}
+.facebook-icon {
+    background-image: url(../../assets/facebook.png);
+}
+.github-icon {
+    background-image: url(../../assets/github.png);
+}
+.footer-text {
+    text-align: center;
+    color:rgba(0, 0, 0, 0.55);
+    font-family: 'Lora', serif;
+}

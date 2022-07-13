@@ -5,7 +5,7 @@ import BlogPost from '../BlogPost'
 
 export default function BlogList() {
     return (
-    <div className='bloglist-container'>
+    <div className='blog-list__container'>
         {blogList.map(item => 
             <BlogPost
                 title={item.title}
@@ -14,6 +14,10 @@ export default function BlogList() {
                 date={item.date}
             /> 
         )}
+        <div className='blog-list__older-btn'>
+            <span className='blog-list__older-text'>{'OLDER POSTS '}</span>
+            <span className='blog-list__older-arrow'>&#10132;</span>
+        </div>
     </div>
   )
 }
