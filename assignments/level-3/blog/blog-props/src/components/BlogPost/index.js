@@ -20,7 +20,7 @@ export default function BlogPost(props) {
                 Posted by <span className='blog-post__author'>{author}</span> on <span className='blog-post__date'>{date}</span>
             </p>
         </div>
-        <hr style={{opacity: .5,}}/>
+        <hr style={{opacity: .25,}}/>
     </div>
   )
 }

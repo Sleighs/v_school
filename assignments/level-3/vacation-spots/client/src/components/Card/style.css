@@ -1,0 +1,24 @@
+.card-container {
+    width: 500px;
+    height: 150px;
+    margin: 2% auto;
+    padding: 2% 3%;
+    box-shadow: 0px 0px 5px gray;
+    background-color: rgb(143, 160, 160);
+}   
+
+.card-place {
+    
+}
+.card-place-title,
+.card-price-symbol {
+    display: inline-block;
+}
+.card-place-title {
+    font-size: 2em;
+}
+
+.card-price-symbol {
+    font-size: 1.7em;
+    margin-left: 2%;
+}

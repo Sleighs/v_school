@@ -2,7 +2,7 @@
     font-family: 'Open Sans', sans-serif;
 }
 .blog-post__title {
-    font-size: 2em;
+    font-size: 2.4em;
     font-weight: 800;
     letter-spacing: -.025em;;
 
@@ -15,7 +15,7 @@
 }
 .blog-post__subtitle {
     margin-top: -5%;
-    font-size: 1.5em;
+    font-size: 1.7em;
 }
 .blog-post__text {
     font-size: 1.25em;

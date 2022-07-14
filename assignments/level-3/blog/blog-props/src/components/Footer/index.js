@@ -5,11 +5,11 @@ export default function Footer() {
   return (
     <div className='footer-container'>
       <hr style={{
-        opacity: .5,
+        opacity: .25,
         width: '100%',
       }}/>
       <div className='footer-icons'>
-        <div className='footer-icon twitter-icon'>
+        <div className='footer-icon' id='twitter-icon'>
           {/*<img src='../../assets/twitter.png' alt=''/>*/}
         </div>
         <div className='footer-icon facebook-icon'></div>
