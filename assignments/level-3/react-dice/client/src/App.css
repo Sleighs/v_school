@@ -1,0 +1,86 @@
+.App {
+  width: 500px;
+  height: 100px;
+  padding: 0 10px;
+
+}
+
+.dice__container {
+  height: 105px;
+  width: 420px;
+  margin: auto;
+  margin-top: 65px;
+}
+.die__container {
+  display: inline-block;
+  border: solid 1pt gray;
+  background-color: white;
+  width: 66px;
+  height: 66px;
+  margin: 5px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 5px darkslategray;
+}
+
+.die__number {
+  text-align: center;
+  font-size: 2.5em;
+  height: 75%;
+  width: 75%;  
+  margin: auto;
+  margin-top: 8px;
+  color: black;
+}
+.turn-info {
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  margin: auto;
+  font-size: 1.6em;
+  color:rgba(0, 0, 0, 0.65);
+  letter-spacing: .025em;
+}
+.btn__container {
+  width: 100%;
+  height: 200px;
+}
+.roll-btn{
+  display: block;
+  padding: 20px;
+  font-size: 2em;
+  width: 400px;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.64);
+  color: white;
+  border-radius: 5px;
+  font-family: Verdana;
+  letter-spacing: .025em;
+}
+
+.reset-btn {
+  display: block;
+  padding: 20px;
+  font-size: 2em;
+  width: 400px;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.78);
+  color: white;
+  border-radius: 5px;
+  font-family: Verdana;
+  letter-spacing: .025em;
+}
+
+.yahtzee-toggle {
+  display: block;
+  padding: 10px;
+  font-size: .8em;
+  width: 150px;
+  margin: 2% auto;
+  background-color: rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 0px 2px rgb(255, 255, 255, .5);
+  color: white;
+  border-radius: 5px;
+  font-family: Verdana;
+  letter-spacing: .025em;
+  border: solid 0pt white
+}

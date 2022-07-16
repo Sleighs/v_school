@@ -1,0 +1,27 @@
+.footer-container {
+    margin: 3% auto;
+    padding: 5% 0;
+    height: 200px;
+    width: 100%;
+    text-align: center;
+}
+.footer-icons {
+    margin: 5% auto 2% auto;
+    width: 320px;
+}
+.footer-icon {
+    height: 65px;
+    width: 65px;
+    display: inline-block;
+    margin: auto 5%;
+}
+.footer-icon-img {
+    width: 65px;
+    opacity: .9;
+}
+.footer-text {
+    text-align: center;
+    color:rgba(0, 0, 0, 0.55);
+    font-family: 'Lora', serif;
+    font-size: 1.2em
+}
