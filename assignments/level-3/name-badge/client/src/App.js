@@ -3,7 +3,7 @@ import './App.css';
 
 function NameBadge() {
   const [badgeCreated, setBadgeCreated] = useState(false)
-  const [badge, setBadge] = useState(null)
+  const [badgeData, setBadgeData] = useState(null)
   const [formData, setFormData] = useState(
     {
         firstName: "", 
@@ -18,33 +18,34 @@ function NameBadge() {
 
   return (
     <div className="app">
+      <h1 style={{
+        textAlign:'center',
+        fontSize: '1.2em',
+      }}>Name Badge Form</h1>
       <Form 
         formData={formData} 
         setFormData={setFormData}
         setBadgeCreated={setBadgeCreated}
-        setBadge={setBadge}
+        setBadgeData={setBadgeData}
       />
 
       {badgeCreated 
         ? <Badge 
-            data={badge} 
+            data={badgeData} 
             setBadgeCreated={setBadgeCreated}
-          />
-        : <></>
+          /> 
+        : <></>  
       }
     </div>
   );
 }
 
 const Form = props => {
-  const { formData, setFormData, setBadgeCreated, setBadge} = props
+  const { formData, setFormData, setBadgeCreated, setBadgeData} = props
 
   const handleSubmit = event => {
     event.preventDefault()
-    
-    setBadge(formData)
-    //console.log(formData)
-
+    setBadgeData(formData)
     setBadgeCreated(true)
   }
 
@@ -89,7 +90,7 @@ const Form = props => {
       />
       <input
         className="form-input input__phone"
-        type="phone"
+        type="tel"
         placeholder="Phone"
         onChange={handleChange}
         name="phone"
@@ -101,13 +102,15 @@ const Form = props => {
         onChange={handleChange}
         name="favoriteFood"
       />
-      <input
+      <textarea
         className="form-input input__about"
         type="text"
+        rows="5"
+        cols="1"
         placeholder="Tell us about yourself"
         onChange={handleChange}
         name="about"
-      />
+      ></textarea>
       <button className="form__submit-btn" type="submit">Submit</button>
     </form>
   )
@@ -117,15 +120,21 @@ const Badge = props => {
   const { data, setBadgeCreated } = props
 
   return (
-    <div className="badge">
-      <div className="badge__name">{'Name: ' + data.firstName + ' ' + data.lastName}</div>
-      <div className="badge__phone">{'Phone: ' + data.phone}</div>
-      <div className="badge__place-of-birth">{'Place of Birth: ' + data.placeOfBirth}</div>
-      <div className="badge__favorite-food">{'Favorite Food: ' + data.favoriteFood}</div>
-      <div className="badge__email">{'Email: ' + data.email}</div>
-      <div className="badge__about">{'About: ' + data.about}</div>
+    <div className="badge__container">
+      <div className="badge__header">Badge</div>
+      <div className="badge">
+        <div className="badge__name">{'Name: ' + data.firstName + ' ' + data.lastName}</div>
+        <div className="badge__phone">{'Phone: ' + data.phone}</div>
+        <div className="badge__place-of-birth">{'Place of Birth: ' + data.placeOfBirth}</div>
+        <div className="badge__favorite-food">{'Favorite Food: ' + data.favoriteFood}</div>
+        <div className="badge__email">{'Email: ' + data.email}</div>
+        <div className="badge__about">
+          <p>About:</p>
+          <div className="badge__about-text">{data.about}</div>
+        </div>
 
-      <button  className="badge__clear-btn"onClick={event => {setBadgeCreated(false)}}>Clear Badge</button>
+        <button  className="badge__clear-btn"onClick={event => {setBadgeCreated(false)}}>Clear Badge</button>
+      </div>
     </div>
   )
 }
