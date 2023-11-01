@@ -1,0 +1,26 @@
+.nav-theme-editor {
+    background-color: rgb(255, 120, 223, .9);
+}
+.nav-theme-btn {
+    display: inline-block;
+}
+.nav-theme-shore {
+    background-color: rgb(131, 207, 255);
+}
+.chat-user-shore {
+    color: rgb(255, 252, 163);
+}
+
+.nav-theme-dynasty {
+    background-color: rgb(94, 255, 142, .9);
+}
+.chat-user-dynasty {
+    color: rgb(255, 255, 255);
+}
+
+.nav-theme-marker {
+    background-color: rgb(255, 113, 116, .95);
+}
+.chat-user-marker {
+    color: rgb(79, 202, 255);
+}

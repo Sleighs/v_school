@@ -1,0 +1,23 @@
+.list__container {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+}
+.list-item {
+    width: 300px;
+    height: 450px;
+    border: dotted 0pt red;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    
+}
+.list-item__image {
+    max-height: 350px;
+    max-width: 300px;
+    margin: auto;
+}
+.list-item__title {
+    font-size: 2em;
+}

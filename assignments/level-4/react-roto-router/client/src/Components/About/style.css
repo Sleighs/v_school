@@ -1,0 +1,25 @@
+.about__container {
+    max-width: 900px;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    padding: 25px;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.about__logo {
+    max-height: 250px;
+    margin: 0 auto;
+}
+.about__text {
+    max-width: 50%;
+    margin: auto;
+}
+.about__text-title {
+    font-size: 2em;
+    color: #1E55B3;
+}
+.about__text-title2 {
+    color: #1E55B3;
+}

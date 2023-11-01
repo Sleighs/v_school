@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Travel Form</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Travel Form">
+    <meta name="author" content="Samuel Wright">
+
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="app">
+      <form name="travel-form" id="travel-form">
+        <div class="input-container">
+            <span class="title">First Name: </span><input name="first-name" id="first-name-input" type="text" value="first"/>
+        </div>
+        <div class="input-container">
+            <span class="title">Last Name: </span><input name="last-name" id="last-name-input" type="text" value="last"/>
+        </div>
+        <div class="input-container">
+            <span class="title">Age: </span><input name="age" id="age-input" type="number" value="21"/>
+        </div>
+        <div class="input-container">
+            <span class="title">Gender: </span>
+            <input class="gender-input" name="gender" type="radio" value="male"/><span>male</span>
+            <input class="gender-input" name="gender" type="radio" value="female"/><span>female</span>
+        </div>
+        <div class="input-container">
+            <label for="location" class="title">Location:</label>
+            <select name="location" id="location-input">
+                <option value="Albuquerque">Albuquerque</option>
+                <option value="Dallas">Dallas</option>
+                <option value="Las Vegas">Las Vegas</option>
+                <option value="New Orleans">New Orleans</option>
+                <option value="Phoenix">Phoenix</option>
+            </select>
+        </div>
+        <div class="input-container">
+            Dietary Restrictions:
+            <div id="diet-container">
+                <input type="checkbox" id="diet1" class="title" name="diet" value="Lactose-free">
+                    <label for="diet1">Lactose free</label><br>
+                <input type="checkbox" id="diet2" class="title" name="diet" value="Vegetarian">
+                    <label for="diet2">Vegetarian</label><br>
+                <input type="checkbox" id="diet4" class="title" name="diet" value="Kosher">
+                    <label for="diet3">Kosher</label><br>
+                <input type="checkbox" id="diet4" class="title" name="diet" value="Keto">
+                    <label for="diet4">Keto</label><br>
+            </div>
+        </div>
+       
+        <input type="submit" id="submit-btn" value="Submit">
+    </form>
+    </div>
+
+    <script src="index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+.footer {
+  height: 100%;
+  width: 100%;
+  padding: 25px 0;
+  background-color: rgba(14, 14, 14, 0.853);
+  text-align: center;
+
+  display: flex;
+  flex-direction: row;
+}
+.footer__brand {
+  width: 20%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  cursor: pointer; 
+}
+.footer__links {
+  width: 50%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.footer__link {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 5px;
+}

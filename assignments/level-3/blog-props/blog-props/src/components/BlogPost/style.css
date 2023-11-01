@@ -1,0 +1,30 @@
+.blog-post {
+    font-family: 'Open Sans', sans-serif;
+}
+.blog-post__title {
+    font-size: 2.4em;
+    font-weight: 800;
+    letter-spacing: -.025em;;
+
+}
+.blog-post__title-container:hover,
+.blog-post__author:hover {
+    text-decoration: none;
+    color: #0085A1;
+
+}
+.blog-post__subtitle {
+    margin-top: -5%;
+    font-size: 1.7em;
+}
+.blog-post__text {
+    font-size: 1.25em;
+    color: gray;
+    font-style: italic;
+    font-family: 'Lora', serif;
+}
+.blog-post__author {
+    color: black;
+}
+
+

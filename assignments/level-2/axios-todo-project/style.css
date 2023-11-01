@@ -1,0 +1,146 @@
+body {
+    background-color: rgb(50, 59, 79);
+    color: white;
+    margin: 0;
+    padding: 0;
+    font-family: 'Cabin', sans-serif;
+    letter-spacing: .05em;
+}
+
+.title {
+    text-align: center;
+    font-size: 2em;
+    letter-spacing: .07em;
+}
+
+.app {
+    border: 4px solid rgba(35, 46, 62, 0.433);
+    width: 60%;
+    padding: 2%;
+    min-height: 55%;
+    margin: auto;
+    border-radius: 5px;
+    box-shadow: 0px 0px 2px 2px rgba(128, 128, 128, 0.467);
+}
+
+#add-item {
+    border: 1px solid black;
+}
+
+.input {
+    width: 100%;
+    height: fit-content;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+.label {
+    margin: 10px;
+}
+
+#list {
+    flex-direction: column;
+    display: flex;
+    padding: 0;
+}
+
+#list li{
+    list-style-type: none;
+    margin: 10px auto;
+}
+#list ul {
+    
+}
+#list div {
+    margin-bottom: 10px;
+}
+.list-item {
+    width: 100%;
+    text-align: left;
+
+    display: inline-block;
+}
+.list-item .input-title {
+    font-size: 1.7em;
+    font-weight: bold;
+    letter-spacing: .05em;
+}
+.list-item .input-description {
+    font-size: 1.4em;
+    width: 100%;
+}
+.input-image__container {
+    display: inline-block;
+    width: 20%;
+    margin: auto;
+}
+.input-image {
+    width: 85%;
+    display: block;
+    margin: auto;
+    margin-bottom: -25%;
+}
+.input-title {
+    display: inline-block;
+}
+.input-price {
+    display: inline-block;
+    margin: auto 2%;
+    font-size: 1.5em;
+}
+.completed-container {
+    display: inline-block;
+}
+.completed-container input {
+}
+.completed-checkbox {
+    font-size: 1em;
+    width: 1.15em;
+    height: 1.15em;
+    margin: auto 15px;
+}
+
+.list-item__top {
+    display: inline-block;
+    margin-left: 15px;
+    width: 70%;
+}
+.list-item__des {
+    display: inline-block;
+}
+.list-item__btns {
+    width: fit-content;
+    margin: auto;
+}
+.delete-button,
+.edit-button {
+    width: 80px;
+    height: 28px;
+    font-size: 16px;
+    display: inline-block;
+    margin: auto;
+    outline: none;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.submit-button {
+    width: 110px;
+    height: 32px;
+    font-size: 20px;
+    display: block;
+    margin: auto;
+    outline: none;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.todos {
+    height: 625px;
+    overflow: scroll;
+}

@@ -1,0 +1,13 @@
+.footer-container {
+    text-align: center;
+    margin: 2% auto;
+}
+
+.footer-link {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-link:visited {
+    color: white;
+}

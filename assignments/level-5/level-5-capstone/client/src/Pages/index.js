@@ -1,0 +1,6 @@
+export { default as HomePage } from './Home'
+export { default as HeroesPage } from './Heroes'
+export { default as HeroInfoPage } from './HeroInfo'
+export { default as CountersPage } from './Counters'
+export { default as LineUpAnalyzerPage } from './LineUpAnalyzer'
+export { default as TierListPage } from './TierList'

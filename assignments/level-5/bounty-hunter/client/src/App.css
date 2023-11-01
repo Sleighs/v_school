@@ -1,0 +1,18 @@
+.App {
+  text-align: center;
+  display: flex;
+}
+.bounty-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.bountylist-container,.bountyform-container {
+  margin: auto 5%;
+  width: 33%;
+} 
+.bountylist-container {
+}
+.bountyform-container {
+
+}

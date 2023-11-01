@@ -1,0 +1,44 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+body {
+    background-color: rgb(31, 34, 45);
+    width: 100%;
+    height: 100%;
+}
+
+#app {
+    width: 98vw;
+    height: 98vh;
+    border: solid 1pt white;
+    padding: 1%;
+}
+
+#click-log {
+    color: white;
+    margin: 2%;
+    width: fit-content;
+    float: right;
+}
+
+#clicks-container {
+    
+}
+#clicks {
+    border: solid 1pt white;
+    height: fit-content;
+    width: fit-content;
+    max-height: 450px;
+    overflow: scroll;
+    margin: 2%;
+    padding: 2%;
+}
+.clicks-item {
+    margin: auto;
+}
+#clear-clicks-btn {
+    color: rgb(31, 34, 45);
+}

@@ -1,0 +1,36 @@
+.create-post__container {
+    
+
+}
+.create-post__content {
+    width: 90%;
+    margin: 3% auto;
+    background: rgb(23, 24, 24);
+    color: white;
+    padding: 2% 0;
+}
+.create-post__title {
+    display: block;
+    height: fit-content;
+}
+.create-post_form {
+    width: 90%;
+    margin: 2% auto;
+}
+.create-post_form-title-input {
+    width: 100%;
+}
+.create-post_form-des-input {
+    width: 100%;
+}
+.create-post_form-submit-btn {
+    margin: 3% 0;
+    outline: none;
+
+    background-color: rgb(217, 216, 205);
+    color: rgb(0, 0, 0);
+    border: solid 0pt;
+    border-radius: 4px;
+    height: 30px;
+    width: 110px;
+}

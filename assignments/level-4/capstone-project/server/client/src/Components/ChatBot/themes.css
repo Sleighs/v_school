@@ -1,0 +1,27 @@
+.chat-bot-editor {
+    color: rgb(255, 120, 223);
+}
+.chat-user-editor {
+    color: rgb(253, 207, 121);
+}
+
+.chat-bot-shore {
+    color: rgb(131, 207, 255);
+}
+.chat-user-shore {
+    color: rgb(255, 252, 163);
+}
+
+.chat-bot-dynasty {
+    color: rgb(94, 255, 142);
+}
+.chat-user-dynasty {
+    color: rgb(255, 255, 255);
+}
+
+.chat-bot-marker {
+    color: rgb(255, 113, 116);
+}
+.chat-user-marker {
+    color: rgb(79, 202, 255);
+}

@@ -1,0 +1,26 @@
+.main-form {
+    color: white;
+}
+
+.advice-form {
+    font-size: 1.5em;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.main-form__text-input-label {
+    font-size: 1em;
+}
+.main-form__text-input {
+    font-size: .85em;
+    width: 300px;
+}
+.main-form__submit-btn {
+    background-color: rgb(61, 19, 19);
+    font-size: .9em;
+    padding: 5px 25px;
+    border-radius: 4px;
+    color: white;
+    margin: 25px auto;
+    border: white solid 1pt;
+}

@@ -1,0 +1,10 @@
+.browse-page {
+  color: white;
+}
+.browse-page__page-title {
+  text-align: center;
+  display: block;
+  width: fit-content;
+  margin: 50px auto 50px auto;
+  
+}

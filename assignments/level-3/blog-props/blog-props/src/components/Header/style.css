@@ -1,0 +1,42 @@
+.header-container {
+    min-height: 560px;
+    width: 100%;
+    font-family: 'Open Sans', sans-serif;
+}
+.header-image {
+    position: absolute;
+    min-height: 560px;
+    width: 100%;
+    top: 0;
+    left: 0;
+
+    background-image: url(../../assets/home-bg.jpeg);
+    background-origin: padding-box;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-sizing: border-box;
+    background-color: rgb(108, 117, 125);
+    filter: brightness(61%);
+    z-index: -1;
+}
+
+.header-title {
+    margin-top: 7.5%;
+    font-size: 5em;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-weight: 800;
+}
+.header-subtitle {
+    margin-top: -5%;
+    font-size: 1.45em;
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+
+@media only screen and (max-width: 990px) {
+    
+
+}

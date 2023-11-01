@@ -1,0 +1,190 @@
+{
+    "appetizers": [
+        {
+            "name": "Clam Chowder",
+            "ingredients": [
+                "Clam",
+                "Bacon",
+                "Onion",
+                "Potatoes"
+            ],
+            "description": "New England clam chowder recipe made with fresh clams"
+        },
+        {
+            "name": "French Fries",
+            "ingredients": [
+                "Potatoes",
+                "Salt",
+                "Pepper",
+                "White pepper",
+                "Garlic powder",
+                "Old bay"
+            ],
+            "description": "Maryland style french fries"
+        },
+        {
+            "name": "Crab Mac and Cheese",
+            "ingredients": [
+                "Crab",
+                "Elbow macaroni",
+                "Sharp cheddar",
+                "Milk"
+            ],
+            "description": "A delicious baked mac and cheese topped with crab meat"
+        }
+    ],
+    "coldSandwiches": [
+        {
+            "name": "Bacon Lettuce Tomato",
+            "ingredients": [
+                "Bacon",
+                "Lettuce",
+                "Tomato",
+                "Sourdough bread"
+            ],
+            "description": "Thick bacon layered on sourdough bread with fresh vegetables"
+        },
+        {
+            "name": "Corned Beef Special",
+            "ingredients": [
+                "Corned beef",
+                "Cole slaw",
+                "American cheese",
+                "Thousand island dressing",
+                "Rye bread"
+            ],
+            "description": "Thinly cut corned beef stacked high and grilled"
+        },
+        {
+            "name": "Italian Sub",
+            "ingredients": [
+                "Salami",
+                "Prosciutto",
+                "Capicola",
+                "American cheese",
+                "Lettuce",
+                "Onion",
+                "Tomato",
+                "Oregano",
+                "Italian roll"
+            ],
+            "description": "Delicious cured meats, cheese and vegetables on an Italian roll"
+        }
+    ],
+    "hotSandwiches": [
+        {
+            "name": "Meatball Paremsan",
+            "ingredients": [
+                "Meatballs",
+                "Parmesan cheese",
+                "Tomato sauce",
+                "Oregano",
+                "Italian roll"
+            ],
+            "description": "A hearty sandwich stuffed with meatballs, tomato sauce and parmesan"
+        },
+        {
+            "name": "Cuban",
+            "ingredients": [
+                "Roast pork",
+                "Ham",
+                "Swiss cheese",
+                "Dill pickle",
+                "Yellow mustard",
+                "Cuban bread"
+            ],
+            "description": "A pressed pork sandwich with swiss and a dill pickle"
+        },
+        {
+            "name": "Chicken Bacon",
+            "ingredients": [
+                "Chicken",
+                "Bacon",
+                "Lettuce",
+                "Tomato",
+                "Pepper-jack cheese",
+                "Honey mustard",
+                "Italian roll"
+            ],
+            "description": "Popular American flavors, including chicken, bacon and honey mustard on an Italian roll"
+        }
+    ],
+    "desserts": [
+        {
+            "name": "Cheesecake",
+            "ingredients": [
+                "Cream cheese", 
+                "Eggs", 
+                "Sugar", 
+                "Sour cream", 
+                "Vanilla"
+            ],
+            "description": "Silky smooth cheese cake topped with topping of choice"
+        },
+        {
+            "name": "Apple Pie",
+            "ingredients": [
+                "Granny Smith apples",
+                "Butter",
+                "Flour",
+                "Sugar",
+                "Cinnamon",
+                "Vanilla"
+            ],
+            "description": "Sweet, light and flavorful pie filled with tart apples"
+        },
+        {
+            "name": "Brownie Souffle",
+            "ingredients": [
+                "Chocolate",
+                "Butter",
+                "Sugar",
+                "Vanilla",
+                "Eggs",
+                "Flour"
+            ],
+            "description": ""
+        }
+    ],
+    "drinks": [
+        {
+            "name": "Lemonade",
+            "ingredients": [
+                "Lemons",
+                "Sugar"
+            ],
+            "description": "A delicious mix of lemons and sugar"
+        },
+        {
+            "name": "Sweet Tea",
+            "ingredients": [
+                "Black tea",
+                "Sugar"
+            ],
+            "description": "A southern favorite made in house"
+        },
+        {
+            "name": "Cola",
+            "ingredients": [
+                "Vanilla",
+                "Cinnamon",
+                "Citrus"
+            ],
+            "description": "Cola soda from tap"
+        },
+        {
+            "name": "Orange Soda",
+            "ingredients": [
+                "Orange soda"
+            ],
+            "description": "Orange soda from tap"
+        },
+        {
+            "name": "Water",
+            "ingredients": [
+                "Water"
+            ],
+            "description": "Choose between sparkling or bottled"
+        }
+    ]
+}

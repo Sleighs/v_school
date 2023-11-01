@@ -1,0 +1,8 @@
+export { default as HomePage } from './home'
+export { default as ShopPage } from './shop'
+export { default as StreamerProfilePage } from './streamer-profile'
+export { default as LoginPage } from './login'
+export { default as UserPage } from './user'
+export { default as BrowsePage } from './browse'
+export { default as ErrorPage } from './error'
+export { default as ComparePage } from './compare'

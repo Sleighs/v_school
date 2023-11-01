@@ -1,0 +1,39 @@
+.user-page__container {
+  color: white;
+}
+.user-page__content {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  margin: 0 auto;
+  width: 90%;
+  height: 100%;
+}
+.user-page__title {
+  margin-top: 5px;
+  font-size: 1rem;
+  color: #9d9d9d;
+}
+
+.user-page__text {
+  margin-top: 15px;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+hr {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.user-page__sign-out-btn {
+  margin-right: auto;
+  margin-top: 15px;
+  width: 150px;
+  height: 50px;
+  background-color: #353233;
+  border: none;
+  border-radius: 25px;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+}

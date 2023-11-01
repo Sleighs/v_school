@@ -1,0 +1,75 @@
+/* Issue Page */
+.issue-page__container {
+    
+}
+.issue-page__content1 {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    margin: auto;
+}
+.issue-page__content2 {
+    display: flex;
+    width: 100%;
+    margin: auto;
+}
+/* Head */
+.issue-page__head {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    /*padding: 25px 35px;*/
+    margin: 15px auto;
+    background-color: rgb(9, 12, 15);
+}
+.issue-page__head-vote-container {
+    width: 100%;
+    max-width: 45px;
+    padding: 15px;
+    margin: 20px auto;
+    text-align: center;
+}
+.issue-page__head-vote-score {
+
+}
+
+.issue-page__head-description-container {
+    width: 100%;
+    padding: 15px;
+}
+.issue-page__head-title {
+
+}
+.issue-page__head-description {
+}
+.issue-page__head-links {
+    margin: 20px auto;
+}
+
+/* Post comment section */
+.issue-page__post-comment-container {
+    background-color: rgb(9, 12, 15);
+    margin: 10px auto;
+    width: 100%;
+}
+
+/* Comment section */
+.issue-page__comments-container {
+    background-color: rgb(9, 12, 15);
+    margin: 10px auto;
+    padding-bottom: 15px;
+    width: 100%;
+}
+.issue-page__comments-head {
+    width: 95%;
+    margin: 2% auto 0 auto;
+    
+}
+.issue-page__comments {
+    width: 95%;
+    margin: auto;
+    
+}
+@media only screen and (max-width: 768px) {
+    
+}

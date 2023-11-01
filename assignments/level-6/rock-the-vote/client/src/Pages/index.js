@@ -1,0 +1,6 @@
+export { default as HomePage } from './Home'
+export { default as ProfilePage } from './Profile'
+export { default as IssuesPage } from './Issues'
+export { default as IssuePage } from './Issue'
+export { default as LoginPage } from './Login'
+export { default as CreatePost } from './CreatePost'

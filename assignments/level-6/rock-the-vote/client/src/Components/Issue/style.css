@@ -1,0 +1,46 @@
+.issue__container {
+    background-color: rgb(19, 21, 20);
+    color: rgb(255, 255, 255);
+    margin: 2% auto;
+    padding: 10px;
+    display: flex;
+    width: 90%;
+}
+.issue__title-text {
+    margin: 12px 10px;
+    font-size: 1.3em;
+}
+.issue__vote-container {
+    margin-right: 15px;
+}
+
+.issue__heading-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+
+}
+.issue__heading-text {
+    margin: 0 10px;
+    width: fit-content;
+}
+
+.issue__links-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.issue__links-item {
+    margin: 0 10px;
+    width: fit-content;
+}
+
+.issue_link {
+    color: white;
+    text-decoration: none;
+}
+.issue_link:visited {
+    color: rgb(237, 240, 213);
+    text-decoration: none;
+}

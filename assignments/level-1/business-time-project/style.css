@@ -1,0 +1,162 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: rgb(31, 40, 45);
+    margin: 0;
+}
+
+#app {
+    width: 100%;
+    height: fit-content;
+    padding: 0;
+    margin: 0 auto;
+}
+
+#nav {
+    position: absolute;
+    color: rgb(255, 255, 255);
+    width: 100%;
+    top: 0;
+    z-index: 5;
+}
+#nav ul {
+    width: 100%;
+}
+#nav li {
+    list-style-type: none;
+    display: inline-block;
+}
+.nav-item {
+    font-size: 1.2em;
+}
+.nav-item a {
+    text-decoration: none;
+}
+.nav-item {
+    
+}
+.alt-nav {
+    color: black;
+}
+.alt-nav a:visited {
+    color: black;
+}
+.main-nav {
+    color: white;
+}
+.main-nav a:visited {
+    color: white;
+}
+#about-link,
+#home-link {
+    float: right;
+    margin: 1%;
+    margin-right: 6%;
+}
+#contact-link {
+    float: left;
+    margin: 1%;
+}
+#landing {
+    width: 100%;
+    
+}
+#landing-pic {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+}
+#landing-title {
+    color: white;
+    font-size: 3.5em;
+    text-align: center;
+    text-shadow: 1px 1px 1px rgb(19, 15, 15, .5);
+    margin: 27% auto;
+}
+#info {
+    width: 100%;
+    height: 100%;
+}
+.info-container {
+    width: 100%;
+    height: 100%;
+}
+#info1 {
+    background-color: white;
+    width: 100%;
+    min-height: 500px;
+    text-align: center;
+    margin: 0;
+    padding-top: 17%;
+}
+#about-info,
+#contact-info {
+    background-color: white;
+    width: 100%;
+    min-height: 100vh;
+    text-align: center;
+    margin: 0;
+    padding-top: 20%;
+}
+#info2 {
+    width: 100%;
+    min-height: 500px;
+    text-align: center;
+}
+#info2-1, #info2-2 {
+    display: inline-block;
+    width: 50%;
+    margin: auto;
+    min-height: 500px;
+    padding-top: 15%;
+}
+#info2-1 {
+    background-color: rgb(218, 144, 144);
+    float: left;
+}
+#info2-2 {
+    background-color: rgb(16, 53, 63);
+    float: right;
+}
+.info-link {
+    display: inline-block;
+    margin-right: 2%;
+    color: cornflowerblue;
+}
+.info-title {
+    font-Size: 2.5em;
+    line-height: .5;
+}
+.info-text1 {
+    font-size: 1.25em;
+}
+#footer {
+    display: block;
+}
+
+@media only screen and (max-device-width: 768px) {
+    body {
+        width: 100vw;
+        padding: 0;
+    }
+    #info1 {
+        background-color: white;
+        width: 100%;
+        min-height: 400px;
+        text-align: center;
+        margin: 0;
+        padding-top: 24%;
+        margin-top: -5%;
+    }
+    #info2-1, #info2-2 {
+        display: block;
+        width: 100%;
+        margin: auto;
+        min-height: 400px;
+        padding-top: 20%;
+    }
+}

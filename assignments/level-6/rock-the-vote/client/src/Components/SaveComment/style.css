@@ -1,0 +1,29 @@
+.save-comment__post-comment-container {
+    padding: 20px;
+}
+.save-comment__post-comment-title {
+
+}
+.save-comment__post-comment-form {  
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    margin: auto;
+
+
+}
+.save-comment__post-comment-form-textarea {
+    width: 100%;
+    min-height: 90px;
+    height: fit-content;
+}
+
+.save-comment__post-comment-form-submit-btn {
+    margin-right: auto;
+    width: 90px;
+    height: 30px;
+    
+    background-color: rgb(27, 32, 36);
+    color: white;
+    font-size: 1.1em;
+}

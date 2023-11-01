@@ -1,0 +1,172 @@
+
+.streamer-list__wrapper {
+  width: 90%;
+  margin: auto;
+  margin-bottom: 50px;
+}
+
+
+/* Table */
+.streamer-list-item__wrapper {
+  width: 100%;
+  margin: auto;
+}
+.streamer-list__table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.streamer-list__table tbody {
+
+}
+.streamer-list__table-head {
+}
+.streamer-list-item__tag:hover {
+  border: solid 1px #f5f5f5;
+  cursor: pointer;
+}
+.streamer-list__table td,
+.streamer-list__table th {
+  padding: 8px;
+}
+
+.streamer-list__table th {
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-top: 1px solid rgba(221, 221, 221, 0);  
+
+}
+
+.streamer-list__table td {
+  border-top: 1px solid rgba(221, 221, 221, 0.464);
+}
+
+.streamer-list__table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: rgba(4, 170, 109, 0.178);
+  color: white;
+}
+.streamer-list__table tr {
+  
+}
+.streamer-list__table td {
+  color: white;
+}
+
+
+
+.streamer-list__table tr:nth-child(even){
+  background-color: #7171712c;
+}
+
+.streamer-list__table tr:nth-child(even):hover {
+  background-color: rgba(214, 214, 214, 0.367);
+}
+.streamer-list__table-row:hover {
+  background-color: rgba(214, 214, 214, 0.367);
+}
+
+.streamer-list-item__wrapper a {
+  color: white;
+  text-decoration: none;
+}
+
+
+/* Options */
+
+.browse-options__wrapper {
+  display: flex;
+  margin: 20px auto;
+  justify-content: space-evenly;
+  width: 90%;
+  align-items: center;
+}
+.browse-options__option {
+  display: flex;
+  align-items: center;
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+  margin-right: 25px;
+  cursor: pointer;
+
+}
+.browse-options__option label {
+  margin-right: 5px;
+}
+
+
+/* Pagination */
+.pagination-container {
+  display: flex;
+  list-style-type: none;
+  width: fit-content;
+  margin: 10px auto;
+
+  .pagination-item {
+    padding: 0 12px;
+    height: 32px;
+    text-align: center;
+    margin: auto 4px;
+    color: rgb(255, 255, 255);
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    letter-spacing: 0.01071em;
+    border-radius: 16px;
+    line-height: 1.43;
+    font-size: 14px;
+    min-width: 32px;
+
+    &.dots:hover {
+      background-color: transparent;
+      cursor: default;
+    }
+    &:hover {
+      background-color: rgba(255, 252, 252, 0.04);
+      cursor: pointer;
+    }
+
+    &.selected {
+      background-color: rgba(0, 0, 0, 0.08);
+    }
+
+    .arrow {
+      &::before {
+        position: relative;
+        /* top: 3pt; Uncomment this to lower the icons as requested in comments*/
+        content: '';
+        /* By using an em scale, the arrows will size with the font */
+        display: inline-block;
+        width: 0.4em;
+        height: 0.4em;
+        border-right: 0.12em solid rgba(255, 255, 255, 0.87);
+        border-top: 0.12em solid rgba(255, 255, 255, 0.87);
+      }
+
+      &.left {
+        transform: rotate(-135deg) translate(-50%);
+      }
+
+      &.right {
+        transform: rotate(45deg);
+      }
+    }
+
+    &.disabled {
+      pointer-events: none;
+
+      .arrow::before {
+        border-right: 0.12em solid rgba(0, 0, 0, 0.43);
+        border-top: 0.12em solid rgba(0, 0, 0, 0.43);
+      }
+
+      &:hover {
+        background-color: transparent;
+        cursor: default;
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+.auth__container {
+    top: 10%;
+    position: absolute;
+}
+.auth__section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10% auto;
+}
+
+.auth__link, 
+.auth__link:visited {
+    color: white;
+    text-decoration: none;
+    margin-top: 20px;
+}
+
+.auth__title {
+    font-size: 1.1em;
+    color: white;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    width: fit-content;
+    text-align: center;
+    height: 110px;
+}
+.auth__table-head {
+    font-size: 1.15em;
+    color: white;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 280px;
+}
+.auth__table-head-item {
+    width: 50%;
+    text-align: center;
+    border-bottom: 1px solid white;
+    padding: 0 0 10px 0;
+}

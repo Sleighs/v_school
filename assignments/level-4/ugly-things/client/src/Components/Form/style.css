@@ -1,0 +1,8 @@
+.form__container {
+    width: fit-content;
+    height: 100px;
+    background-color: rgb(171, 185, 191);
+    box-shadow: 0px 0px 3px rgb(83, 79, 79);
+    color: black;
+    padding: 25px;
+}

@@ -1,0 +1,22 @@
+.study-guide {
+    color: white;
+    text-align: justify;
+}
+.study-guide__page-title {
+    text-align: center;
+}
+.study-guide__row{
+    margin: 25px auto;
+    background-color: rgba(39, 31, 45, 0.435);
+    padding: 20px 0;
+}
+.study-guide__title {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+.study-guide__text {
+    font-size: 1.1em;
+    margin-bottom: 5px;
+}

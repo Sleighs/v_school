@@ -1,0 +1,99 @@
+.home-page__container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.home-page__head {
+    margin: auto;
+    width: 100%;
+    background-color: rgba(2, 22, 30, 0.5);
+    position: absolute;
+    top: 42%;
+    padding: 3% 0;
+}
+.home-page__head h1{
+    text-align: center;
+}
+.home-page__head p {
+    text-align: center;
+}
+.home-page__head-title {
+    text-shadow: 3px 3px 3px rgb(221, 144, 1);  
+    font-size: 4.25em;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+}
+.home-page__head-title2 {
+    text-shadow: 1px 1px 1px black; 
+    font-size: 1.5em;
+    text-align: center; 
+}
+.home-page__section {
+    width: 100%;
+}
+.home-page__section-text {
+    margin: 5% auto 5% auto;
+    font-size: 1.5em;
+    text-align: center;
+    width: 100%;
+    background-color: rgba(2, 22, 30, 0.5);
+}
+.home-page__section-text p {
+    width: 80%;
+    margin: auto;
+    padding: 2.5% 0;
+}
+.home-page__heroes {
+    width: 100%;
+    height: fit-content;
+    background-color: rgba(2, 22, 30, 0.5);
+    margin-top: 3%;
+    padding: 2% 0;
+}
+.home-page__heroes p {
+    text-align: center;
+    font-size: 1.25em;
+}
+.home-page__landing-img-container {
+
+}
+.home-page__landing-img {
+    width: 100%;
+    display: block;
+}
+
+@media only screen and (max-width: 1000px) {
+    .home-page__head {
+        top: 30%;
+    }
+
+}
+@media only screen and (max-width: 900px) {
+    .home-page__head {
+        top: 25%;
+    }
+
+}
+@media only screen and (max-width: 700px) {
+    .home-page__head {
+        top: 17%;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .home-page__head {
+        top: 8.5%;
+        padding: 1% 0 3% 0;
+    }
+    .home-page__head-title {
+        text-shadow: 3px 3px 3px rgb(221, 144, 1);  
+        font-size: 2.85em;
+        font-family: 'Orbitron', sans-serif;
+    }
+    .home-page__head-title2 {
+        font-size: 1.25em;
+        width: 80%;
+        margin: auto;
+        margin-top: -3%;
+    }
+
+}

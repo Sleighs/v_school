@@ -1,0 +1,21 @@
+.comment__container {
+    padding: 12px 0;
+    display: flex;
+    margin: 1.5% auto;
+    background-color: rgb(21, 22, 27);
+    width: 100%;
+}
+.comment__content {
+    margin: auto;
+    width: 90%;
+}
+.comment__vote-container {
+    text-align: center;
+    width: 80px;
+}
+.comment__text-container {
+    margin: 10px auto;
+}
+.comment__links-container {
+    display: flex;
+}

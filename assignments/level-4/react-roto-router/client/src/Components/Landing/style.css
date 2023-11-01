@@ -1,0 +1,16 @@
+.landing__container {
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+
+    padding: 25px;
+    
+}
+.landing__image {
+    margin: 15px auto 0px auto;
+    max-height: 440px;
+}
+.landing__header-text {
+    font-size: 2.6em;
+    color: #1E55B3;
+}

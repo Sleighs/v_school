@@ -1,0 +1,47 @@
+.App {
+    width: 550px;
+    max-width: 90%;
+    height: 100%;
+    margin: auto;
+}
+
+.friend__container {
+    background-color: lightgray;
+    margin: 2% auto;
+    padding: 3%
+}
+.friend__name {
+    font-size: 2.5em;
+    display: inline-block;
+    color: rgb(68, 67, 91);
+    font-weight: bold;
+    text-shadow: 0px 0px 5px white;
+}
+.friend__age {
+    float: right;
+    display: inline-block;
+    font-size: 1.8em;
+    font-weight: bold;
+    font-family: Monaco;
+    color:rgb(68, 67, 91, .75);
+}
+
+.pet__container {
+    background-color: white;
+    margin: 1%;
+    padding: 7px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px gray;
+    font-size: 1.4em;
+}
+
+.pet__name {
+    display: inline-block;
+    color: rgb(16, 24, 93);
+}
+.pet__breed {
+    display: inline-block;
+    float: right;
+    color: darkslategray;
+
+}

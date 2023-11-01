@@ -1,0 +1,122 @@
+.hero-info__container {
+    width: 100%;
+}
+
+.hero-info {
+    display: grid;
+    grid-template-columns: 5;
+    grid-template-rows: auto;
+    width: 95%;
+    margin: auto;
+}
+.content__nav-container {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    padding: 1%;
+    top: 0; 
+    position: sticky;
+    height: fit-content;
+}
+.hero-info__content {
+    grid-column-start: 2;
+    grid-column-end: 6;
+    padding: 1% 2%;
+}
+
+.content__nav {
+    padding: 2%;
+}
+.content-section {
+    width: 100%;
+}
+
+/* Info Card */
+.info-card__container {
+    border: solid 1pt white;
+    width: 400px;
+}
+.info-card__portrait {
+    width: 100%;
+    max-width: 400px;
+
+}
+.info-card__table {
+    width: 100%;
+}
+.info-card__table-head {
+    background-color: rgb(0, 213, 255);
+    color: white;
+    font-size: 1.6em;
+    text-align: center;
+    padding: 9px 0;
+}
+
+.info-card__table-col-1 {
+    background-color: gold;
+    width: 33%;
+    color: white;
+    font-size: 1.4em;
+    text-shadow: 1px 1px 1px gray;
+    font-weight: bold;
+    padding: 0 3%;
+}
+.info-card__table-col-2 {
+    color: white;
+    font-size: 1.4em;
+    text-transform: capitalize;
+    padding: 0 3%;
+}
+
+/* Counters */
+.hero-info__counters {
+    width: 100%;
+}
+
+.strong-against__container {
+    width: 90%;
+    display: inline-block;
+}
+.weak-against__container {
+    width: 90%;
+    display: inline-block;
+}
+.counters-img {
+    max-width: 75px;
+    background-color: rgba(228, 251, 248, 0.892);
+    border-radius: 5%;
+    box-shadow: 1px 1px 1px rgba(46, 43, 43, 0.834);   
+}
+
+.counters-img__container {
+    display: inline-block;
+    margin: 3px;
+}
+.hero-info__counters-strong,
+.hero-info__counters-weak {
+    font-size: 1.5em;
+    margin: 5% 0;
+    width:  80%;
+}
+.hero-info__counters-strong h2 {
+    border-bottom: solid 2pt blue; 
+}
+
+.hero-info__counters-weak h2 {
+    border-bottom: solid 2pt red; 
+}
+
+@media only screen and (max-width: 600px) {
+    .content__nav-container {
+        display: none;
+    }
+    .hero-info__content {
+        grid-column-start: 1;
+        grid-column-end: 6;
+        padding: 1%;
+    }
+    .info-card__portrait {
+        width: 70vw;
+        margin: auto;
+        display: block;
+    }
+}

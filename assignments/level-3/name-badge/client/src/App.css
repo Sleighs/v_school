@@ -1,0 +1,163 @@
+.app {
+  width: 650px;
+  height: 100%;
+  padding: 2%;
+  
+}
+
+.form {
+  width: 600px;
+  height: 350px;
+  border: solid 2pt darkgray;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: auto;
+  margin-bottom: 5%; 
+  border-radius: 12px;
+}
+
+.form-input {
+  margin: 5%;
+  border: solid 1pt darkgray;
+  border-radius: 3px;
+}
+
+.input__first-name {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+.input__last-name {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+.input__email {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+.input__place-of-birth {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+.input__phone {
+  grid-row-start: 3;
+  grid-row-end: 4;
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+.input__favorite-food {
+  grid-row-start: 3;
+  grid-row-end: 4;
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+.input__about {
+  grid-row-start: 4;
+  grid-row-end: 5;
+  grid-column-start: 1;
+  grid-column-end: 3;
+
+  width: 94.25%;
+  height: 90px;
+  margin: auto;
+  overflow: auto;
+  
+}
+.form__submit-btn {
+  grid-row-start: 5;
+  grid-row-end: 6;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  width: 95%;
+  height: 30px;
+  margin: auto;
+  overflow: auto;
+}
+
+.badge__container {
+  width: 640px;
+  height: 400px;
+  border: solid 2pt darkgray;
+  
+  margin-bottom: 5%; 
+  border-radius: 12px;
+}
+.badge {
+  width: 100%;
+  height: 84%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: auto;
+}
+.badge__header {
+  padding: .6% 0 1% 3%;
+  width: 622px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  color: white;
+  font-size: 1.25em;
+  font-weight: bold;
+  text-align: center;
+}
+.badge__name {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+.badge__phone {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+.badge__place-of-birth {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+.badge__favorite-food {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+.badge__email {
+  grid-row-start: 3;
+  grid-row-end: 4;
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+.badge__about {
+  grid-row-start: 4;
+  grid-row-end: 5;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  margin-top: -20px;
+}
+.badge__about-text {
+  border: solid 1pt gray;
+  width: 93.5%;
+  height: 95px;
+  overflow: auto;
+}
+.badge__clear-btn {
+  grid-row-start: 5;
+  grid-row-end: 6;
+  grid-column-start: 1;
+  grid-column-end: 3;
+
+  margin: auto;
+  margin-left: 40%;
+  padding: 8px;
+}
