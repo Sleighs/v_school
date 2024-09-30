@@ -28,7 +28,7 @@ const Favorite = require('./models/Favorite.js')
 
 dotenv.config();
 
-happ.use(morgan("dev"));
+app.use(morgan("dev"));
 
 // Enable CORS 
 app.use(cors());

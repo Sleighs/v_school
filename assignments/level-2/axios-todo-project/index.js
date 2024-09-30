@@ -254,7 +254,7 @@ const displayList = () => {
 async function getListData() {
     try {
         const response = await axios.get('https://api.vschool.io/samuelwright/todo');
-        listData.apiData = response.d
+        listData.apiData = response.data
         displayList()
     } catch (error) {
         console.error(error);
