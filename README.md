@@ -1,6 +1,6 @@
-# School Assignments
+# Web Development Course Assignments and Exercises 
 
-A selection of complete MERN stack (MongoDb, Express, React, and Node) web development exercises and assignments, ranging from simple algorithms to full stack applications.
+A selection of complete MERN stack (MongoDb, Express, React, and Node) web development projects and exercises I wrote, ranging from simple algorithms to full stack applications.
 
 The assignments are organized into 6 groups:
 - Level 1 - Fundamentals 1 (HTML, CSS and Javascript)
